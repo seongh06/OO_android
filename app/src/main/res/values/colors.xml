@@ -5,5 +5,8 @@
     <color name="gray">#767373</color>
     <color name="warning">#F17357</color>
     <color name="oo.yellow">#F3AE3C</color>
+    <color name="oo.yellow.30">#4DF3AE3C</color>
     <color name="light.gray">#B4B4B4</color>
+    <color name="hint.gray">#D9D9D9</color>
+    <color name="light.yellow">#FEE500</color>
 </resources>

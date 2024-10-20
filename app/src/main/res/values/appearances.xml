@@ -8,12 +8,31 @@
         <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
     
-    <style name="TextAppearance.OO.logo">
+    <style name="TextAppearance.OO.logo_60sp">
         <item name="fontFamily">@font/rixinooariduri_pro_regular</item>
         <item name="android:textSize">60sp</item>
+        <item name="android:textColor">@color/oo.yellow</item>
     </style>
 
+    <style name="TextAppearance.OO.logo_36sp">
+        <item name="fontFamily">@font/rixinooariduri_pro_regular</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/oo.yellow</item>
+    </style>
+
+
     <style name="TextAppearance.OO.16sp">
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+    <style name="TextAppearance.OO.guide">
+        <item name="android:textColor">@color/light.gray</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.OO.hint">
+        <item name="android:textColor">@color/light.gray</item>
         <item name="android:textSize">16sp</item>
     </style>
 
