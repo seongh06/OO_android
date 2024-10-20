@@ -9,4 +9,5 @@
     <color name="light.gray">#B4B4B4</color>
     <color name="hint.gray">#D9D9D9</color>
     <color name="light.yellow">#FEE500</color>
+    <color name="empty">#00ffffff</color>
 </resources>
