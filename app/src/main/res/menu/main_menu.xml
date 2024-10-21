@@ -2,4 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_unselected_search"
+        android:title="검색"/>
+
+    <item
+        android:id="@+id/communityFragment"
+        android:icon="@drawable/ic_unselected_community"
+        android:title="커뮤니티" />
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_unselected_home"
+        android:title="홈" />
+
+    <item
+        android:id="@+id/promotionFragment"
+        android:icon="@drawable/ic_unselected_promotion"
+        android:title="홍보게시판" />
+
+    <item
+        android:id="@+id/mypageFragment"
+        android:icon="@drawable/ic_unselected_mypage"
+        android:title="마이페이지" />
+
 </menu>
