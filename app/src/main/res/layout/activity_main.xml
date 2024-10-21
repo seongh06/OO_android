@@ -36,10 +36,7 @@
             app:itemBackground="@color/white"
             app:itemIconSize="32dp"
             app:itemIconTint="@color/gray"
-            app:itemTextAppearanceActive="@style/TextAppearance.TTALKKAG.Bnv"
-            app:itemTextAppearanceInactive="@style/TextAppearance.TTALKKAG.Bnv"
-            app:itemTextColor="@color/gray"
-            app:labelVisibilityMode="labeled"
+            app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/main_menu"/>
 
