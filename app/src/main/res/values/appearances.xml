@@ -49,4 +49,8 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="TextAppearance.OO.20sp">
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>
