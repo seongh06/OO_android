@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signup_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="ggum.oo.presentation.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_LoginFragment_to_SignupFragment"
+            app:destination="@id/signupFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="ggum.oo.presentation.login.SignupFragment"
+        android:label="SignupFragment"
+        tools:layout="@layout/fragment_signup">
+        <action
+            android:id="@+id/action_SignupFragment_to_SignupEmailFragment"
+            app:destination="@id/signupEmailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupEmailFragment"
+        android:name="ggum.oo.presentation.login.SignupEmailFragment"
+        android:label="SignupEmailFragment"
+        tools:layout="@layout/fragment_signup_email"/>
+</navigation>

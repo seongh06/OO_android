@@ -97,6 +97,7 @@
             style="@style/TextAppearance.OO.16sp"
             android:textColor="@color/white"
             android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
             app:bottomto="@id/layout_signup_box"
             app:layout_constraintEnd_toEndOf="@id/view_signup_email_authentication_number_line"
             app:layout_constraintBottom_toTopOf="@id/view_signup_email_authentication_number_line"
@@ -112,7 +113,7 @@
             app:layout_constraintStart_toStartOf="@id/view_signup_email_authentication_number_line"
             app:layout_constraintTop_toBottomOf="@id/view_signup_email_authentication_number_line"
             android:layout_marginTop="15dp"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_signup_email_button"

@@ -1,31 +1,22 @@
 package ggum.oo.presentation.login
 
-import android.content.Intent
-import android.text.SpannableString
-import android.text.style.UnderlineSpan
-import android.widget.TextView
-import androidx.activity.viewModels
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
-import ggum.oo.databinding.ActivitiyTestBinding
 import ggum.oo.databinding.ActivityLoginBinding
 import ggum.oo.presentation.base.BaseActivity
-import ggum.oo.util.extension.repeatOnStarted
-import ggum.oo.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
-class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
+class LoginActivity : AppCompatActivity() {
 
-    override fun initView() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
 
-        /*binding.tvLoginSignup.setOnSingleClickListener {
-            val intent = Intent(this, SignUpFragment::class.java)
-            startActivity(intent) // LoginActivity 시작
-            finish()
-        }*/
-
-    }
-
-    override fun initObserver() {
+        // Setting up Navigation
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_login) as? NavHostFragment
+        val navController = navHostFragment?.navController
     }
 }

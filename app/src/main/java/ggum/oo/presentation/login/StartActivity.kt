@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
-import ggum.oo.databinding.ActivitiyTestBinding
 import ggum.oo.databinding.ActivityStartBinding
 import ggum.oo.presentation.base.BaseActivity
 import ggum.oo.util.extension.repeatOnStarted
