@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/oo.yellow" />
+    <size android:height="4dp" /> <!-- 도형의 높이 조정 -->
+</shape>
