@@ -131,7 +131,7 @@
                 style="@style/TextAppearance.OO.16sp"
                 android:textColor="@color/white"
                 android:gravity="center"
-                android:background="@drawable/shape_rect_8_oy_30"
+                android:background="@drawable/shape_rect_8_yellow_fill30"
                 android:padding="15dp"/>
 
         </LinearLayout>
