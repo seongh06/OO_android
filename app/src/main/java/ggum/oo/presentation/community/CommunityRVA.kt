@@ -8,10 +8,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
-import ggum.oo.data.service.CommunityList
 import ggum.oo.data.service.ContentItem
 
-class CommunityRVA(private val contentList: List<ContentItem>) : RecyclerView.Adapter<CommunityRVA.ViewHolder>() {
+class CommunityRVA(private val communityList: List<ContentItem>) : RecyclerView.Adapter<CommunityRVA.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvArea: TextView = itemView.findViewById(R.id.tv_content_area_item)
@@ -56,8 +55,8 @@ class CommunityRVA(private val contentList: List<ContentItem>) : RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(contentList[position])
+        holder.bind(communityList[position])
     }
 
-    override fun getItemCount(): Int = contentList.size
+    override fun getItemCount(): Int = communityList.size
 }
