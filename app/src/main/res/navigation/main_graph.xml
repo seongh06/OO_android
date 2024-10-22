@@ -15,7 +15,17 @@
         android:id="@+id/searchFragment"
         android:name="ggum.oo.presentation.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search"/>
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="ggum.oo.presentation.search.SearchResultFragment"
+        android:label="SearchResultFragment"
+        tools:layout="@layout/fragment_search_result"/>
 
     <fragment
         android:id="@+id/promotionFragment"

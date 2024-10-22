@@ -2,17 +2,22 @@ package ggum.oo.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
 import ggum.oo.databinding.FragmentSearchBinding
 import ggum.oo.presentation.base.BaseFragment
 import ggum.oo.presentation.search.SearchHistoryRVA
+import ggum.oo.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
 
     private lateinit var adapter: SearchHistoryRVA
+    private val navigator by lazy { findNavController() }
+
     private val searchHistory = listOf(
         "첫 번째 검색어",
         "두 번째 검색어",
@@ -28,6 +33,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
         // LinearLayoutManager 설정
         binding.rvSearchHistory.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.ivSearchButton.setOnSingleClickListener {
+            navigator.navigate(R.id.action_searchFragment_to_searchResultFragment)
+        }
     }
 
     override fun initObserver() {
