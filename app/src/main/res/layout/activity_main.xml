@@ -35,10 +35,11 @@
             app:itemActiveIndicatorStyle="@android:color/transparent"
             app:itemBackground="@color/white"
             app:itemIconSize="32dp"
-            app:itemIconTint="@color/gray"
+            app:itemIconTint="@color/selector"
             app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/main_menu"/>
+            app:menu="@menu/main_menu" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

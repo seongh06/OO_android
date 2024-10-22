@@ -11,4 +11,28 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home"/>
 
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="ggum.oo.presentation.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search"/>
+
+    <fragment
+        android:id="@+id/promotionFragment"
+        android:name="ggum.oo.presentation.promotion.PromotionFragment"
+        android:label="PromotionFragment"
+        tools:layout="@layout/fragment_promotion"/>
+
+    <fragment
+        android:id="@+id/mypageFragment"
+        android:name="ggum.oo.presentation.mypage.MypageFragment"
+        android:label="MypageFragment"
+        tools:layout="@layout/fragment_mypage"/>
+
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="ggum.oo.presentation.community.CommunityFragment"
+        android:label="CommunityFragment"
+        tools:layout="@layout/fragment_community"/>
+
 </navigation>
