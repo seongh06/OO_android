@@ -68,8 +68,14 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+<<<<<<< Updated upstream
     <style name="TextAppearance.OO.18sp">
         <item name="android:textSize">18sp</item>
+=======
+    <style name="TextAppearance.OO.searchbar">
+        <item name="android:textColor">@color/light.gray</item>
+        <item name="android:textSize">16sp</item>
+>>>>>>> Stashed changes
     </style>
 
 </resources>
