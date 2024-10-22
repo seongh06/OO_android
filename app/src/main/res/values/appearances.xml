@@ -53,4 +53,9 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextAppearance.OO.searchbar">
+        <item name="android:textColor">@color/light.gray</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
