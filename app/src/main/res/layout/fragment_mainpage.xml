@@ -27,12 +27,12 @@
                 android:layout_marginEnd="20dp"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_search_bar"
                 style="@style/TextAppearance.OO.searchbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="동아리글, 동글동글!"
+                android:hint="동아리글, 동글동글!"
                 android:background="@drawable/shape_rect_10_f3ae3c_line"
                 android:gravity="left"
                 android:paddingStart="50dp"
@@ -42,8 +42,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                />
+                android:layout_marginEnd="20dp"/>
+
             <ImageView
                 android:id="@+id/iv_search_bar_circle"
                 android:layout_width="24sp"
