@@ -24,7 +24,7 @@ class ContentRVA(private val contentList: List<ContentItem>) : RecyclerView.Adap
         fun bind(contentItem: ContentItem) {
             // Boolean 값을 기반으로 area 표시
             tvArea.text = if (contentItem.area) "교내" else "교외"
-            tvTitle.text = contentItem.title
+            setTextWithLimit(tvTitle, contentItem.title, 10)
             setTextWithLimit(tvBody, contentItem.body, 30) // 최대 100자 제한
 
             // 이미지가 null인 경우 CardView를 GONE으로 설정
