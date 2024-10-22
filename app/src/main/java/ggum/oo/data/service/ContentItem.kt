@@ -1,6 +1,7 @@
 package ggum.oo.data.service
 
 data class ContentItem(
+    val category: Boolean,
     val area: Boolean,
     val title: String,
     val body: String,

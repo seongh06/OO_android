@@ -46,15 +46,18 @@
         app:layout_constraintTop_toTopOf="@id/tv_content_title_item"
         android:layout_marginTop="-10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/shape_rect_10_white000_fill_3e8bff_line"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@color/empty"
         android:layout_marginEnd="21dp"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:elevation="5dp">
 
         <ImageView
             android:id="@+id/iv_content_img"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/img_example_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/img_example_content"
+            android:scaleType="centerCrop"/>
 
     </androidx.cardview.widget.CardView>
 

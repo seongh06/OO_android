@@ -23,7 +23,7 @@
             android:src="@drawable/ic_back"
             app:layout_constraintTop_toTopOf="@id/community_logo_text"
             app:layout_constraintBottom_toBottomOf="@id/community_logo_text"
-            />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
             android:id="@+id/community_logo_text"
@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="익명1"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="2dp"/>
             </LinearLayout>
 
             <TextView
@@ -134,7 +134,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_dot_line"
+                android:src="@drawable/ic_dot_line"/>
 
 
         </LinearLayout>
