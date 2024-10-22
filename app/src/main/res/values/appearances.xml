@@ -87,4 +87,15 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/light.gray</item>
     </style>
+    
+    <style name="TextAppearance.OO.17sp">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.OO.yellow_17sp">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/oo.yellow</item>
+    </style>
 </resources>

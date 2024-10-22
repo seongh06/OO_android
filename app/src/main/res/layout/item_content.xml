@@ -23,20 +23,20 @@
         style="@style/TextAppearance.OO.title_16sp"
         app:layout_constraintTop_toBottomOf="@id/tv_content_area_item"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf=""
         android:layout_marginTop="10dp"
         android:layout_marginStart="21dp"/>
 
     <TextView
         android:id="@+id/tv_content_body_item"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문"
+        android:text="본문"
         style="@style/TextAppearance.OO.16sp"
         app:layout_constraintTop_toBottomOf="@id/tv_content_title_item"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="100dp"
         app:layout_constraintStart_toStartOf="parent"
+        android:gravity="left"
         android:layout_marginStart="21dp"/>
 
     <androidx.cardview.widget.CardView
@@ -47,7 +47,8 @@
         android:layout_marginTop="-10dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/shape_rect_10_white000_fill_3e8bff_line"
-        android:layout_marginEnd="21dp">
+        android:layout_marginEnd="21dp"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/iv_content_img"
@@ -70,7 +71,7 @@
             android:id="@+id/tv_content_hour_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HH:MM"
+            android:text="YYYY-MM-DD"
             style="@style/TextAppearance.OO.gray_12sp"/>
 
         <ImageView
