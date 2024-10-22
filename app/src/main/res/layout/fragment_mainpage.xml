@@ -69,6 +69,7 @@
                 android:id="@+id/scrollable_content"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_search_bar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -77,23 +78,35 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/iv_banner"
+                    
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vp_mainpage_banner"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:src="@drawable/img_mainpage_ad"
-                        android:layout_marginTop="16dp"
+                        android:layout_height="222dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        >
+                    </androidx.viewpager2.widget.ViewPager2>
+                    
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/rv_mainpage_benner_img"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        tools:listitem="@layout/item_mainpage_banner"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="222dp">-->
+<!--                    </androidx.recyclerview.widget.RecyclerView>-->
+
 
                     <LinearLayout
                         android:id="@+id/first_contnet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_rect_30_yellow_line"
-                        app:layout_constraintTop_toBottomOf="@id/iv_banner"
+                        app:layout_constraintTop_toBottomOf="@id/vp_mainpage_banner"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="20dp"

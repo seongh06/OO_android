@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-=======
-    xmlns:app="http://schemas.android.com/apk/res-auto">
->>>>>>> main
 
     <data>
 
@@ -38,11 +34,7 @@
             />
 
         <LinearLayout
-<<<<<<< HEAD
             android:id="@+id/layout_community_post_main_content"
-=======
-            android:id="@+id/first_contnet"
->>>>>>> main
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/community_logo_text"
@@ -107,7 +99,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="본문본문본문본문본문본문본문본문본문 ... 본문본문본문본문본문본문본문본문본문 ... "
-<<<<<<< HEAD
                 android:layout_marginBottom="20dp"
                 />
         </LinearLayout>
@@ -116,7 +107,7 @@
             android:layerType="software"
             android:layout_width="match_parent"
             android:layout_height="1.5dp"
-            android:src="@drawable/ic_dot_line"
+            android:src="@drawable/shape_dot_line"
             app:layout_constraintTop_toBottomOf="@id/layout_community_post_main_content"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -128,18 +119,6 @@
 -->
             android:orientation="vertical"
 
-=======
-                android:layout_marginBottom="10dp"
-                />
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_dot_line"
-
-
-        </LinearLayout>
-
->>>>>>> main
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
