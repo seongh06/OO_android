@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+
+    <stroke
+        android:color="@color/light.gray"
+        android:width="1dp"
+        android:dashGap="5dp"
+        android:dashWidth="5dp"/>
+</shape>
+=======
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="412dp"
     android:height="1dp"
@@ -8,3 +19,4 @@
         android:strokeWidth="1"
         android:pathData="M0 0.5L412 0.5"/>
 </vector>
+>>>>>>> main

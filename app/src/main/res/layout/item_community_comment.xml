@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 댓글 작성자의 프로필 이미지 -->
+    <ImageView
+        android:id="@+id/iv_image_profile"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/img_anony_profile"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="익명1"
+        android:layout_marginStart="2dp"
+
+    <!-- 댓글 내용 및 작성 정보 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
+
+        <!-- 작성자의 닉네임 -->
+        <TextView
+            android:id="@+id/comment_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <!-- 댓글 내용 -->
+        <TextView
+            android:id="@+id/comment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="댓글 내용이 여기에 표시됩니다."
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+</LinearLayout>
