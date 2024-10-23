@@ -35,7 +35,21 @@
         android:id="@+id/promotionFragment"
         android:name="ggum.oo.presentation.promotion.PromotionFragment"
         android:label="PromotionFragment"
-        tools:layout="@layout/fragment_promotion"/>
+        tools:layout="@layout/fragment_promotion">
+        <action
+            android:id="@+id/action_promotionFragment_to_promotionWriteFragment"
+            app:destination="@id/promotionWriteFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/promotionWriteFragment"
+        android:name="ggum.oo.presentation.promotion.PromotionWriteFragment"
+        android:label="PromotionWriteFragment"
+        tools:layout="@layout/fragment_promotion_write">
+        <action
+            android:id="@+id/action_promotionWriteFragment_to_promotionFragment"
+            app:destination="@id/promotionFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/mypageFragment"

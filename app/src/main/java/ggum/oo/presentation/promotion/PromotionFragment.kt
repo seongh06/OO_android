@@ -1,5 +1,6 @@
 package ggum.oo.presentation.promotion
 
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -9,6 +10,7 @@ import ggum.oo.databinding.FragmentPromotionBinding
 import ggum.oo.databinding.FragmentSearchResultBinding
 import ggum.oo.presentation.base.BaseFragment
 import ggum.oo.presentation.search.ContentVPA
+import ggum.oo.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
 class PromotionFragment : BaseFragment<FragmentPromotionBinding>(R.layout.fragment_promotion) {
@@ -16,12 +18,14 @@ class PromotionFragment : BaseFragment<FragmentPromotionBinding>(R.layout.fragme
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var promotionVPA: PromotionVPA
+    private val navigator by lazy { findNavController() }
 
     override fun initView() {
         tabLayout = binding.tabSearchResultCategory
         viewPager = binding.vpSearchResultList
 
         setupViewPager()
+        goToWritePromotion()
     }
 
     private fun setupViewPager() {
@@ -42,5 +46,11 @@ class PromotionFragment : BaseFragment<FragmentPromotionBinding>(R.layout.fragme
 
     override fun initObserver() {
 
+    }
+
+    private fun goToWritePromotion() {
+        binding.fabPromotionWriteBtn.setOnSingleClickListener {
+            navigator.navigate(R.id.action_promotionFragment_to_promotionWriteFragment)
+        }
     }
 }
