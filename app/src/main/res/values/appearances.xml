@@ -99,9 +99,9 @@
         <item name="android:textColor">@color/oo.yellow</item>
     </style>
 
-    <style name="TextAppearance.OO.searchbar">
-        <item name="android:textColor">@color/light.gray</item>
-        <item name="android:textSize">16sp</item>
+    <style name="TextAppearance.OO.bold_20sp">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>
