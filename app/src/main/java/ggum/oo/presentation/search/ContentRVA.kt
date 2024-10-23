@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
 import ggum.oo.data.service.ContentItem
 
-class ContentRVA(private val contentList: List<ContentItem>) : RecyclerView.Adapter<ContentRVA.ViewHolder>() {
+class ContentRVA(private var contentList: List<ContentItem>) : RecyclerView.Adapter<ContentRVA.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvArea: TextView = itemView.findViewById(R.id.tv_content_area_item)
@@ -59,4 +59,9 @@ class ContentRVA(private val contentList: List<ContentItem>) : RecyclerView.Adap
     }
 
     override fun getItemCount(): Int = contentList.size
+
+    fun updateList(newList: List<ContentItem>) {
+        contentList = newList
+        notifyDataSetChanged() // 데이터가 변경되었음을 알림
+    }
 }
