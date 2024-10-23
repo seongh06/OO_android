@@ -2,9 +2,11 @@ package ggum.oo.presentation.community
 
 import android.content.Intent
 import android.graphics.Color
+import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -12,6 +14,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
+import ggum.oo.databinding.DialogPostBinding
 import ggum.oo.databinding.FragmentCommunityBinding
 import ggum.oo.databinding.FragmentCommunityWriteBinding
 import ggum.oo.presentation.MainActivity
@@ -45,7 +48,7 @@ class CommunityWriteFragment : BaseFragment<FragmentCommunityWriteBinding>(R.lay
 
     private fun goToCommunity() {
         binding.tvCommunityWriteSuccess.setOnSingleClickListener {
-            navigator.navigate(R.id.action_communityWriteFragment_to_communityFragment)
+            showDialog()
         }
     }
 
@@ -67,6 +70,30 @@ class CommunityWriteFragment : BaseFragment<FragmentCommunityWriteBinding>(R.lay
         } else {
             binding.ivCommunityWriteOut.setImageResource(R.drawable.shape_circle_unselected)
             binding.tvCommunityWriteOut.setTextColor(ContextCompat.getColor(requireContext(), R.color.light_gray))
+        }
+    }
+
+    private fun showDialog() {
+        val dialogView =
+            LayoutInflater.from(requireContext()).inflate(R.layout.dialog_post, null)
+
+        val dialogBinding = DialogPostBinding.bind(dialogView)
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .setCancelable(false)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.show()
+
+        val layoutParams = dialog.window?.attributes
+        layoutParams?.dimAmount = 0.8f
+        dialog.window?.attributes = layoutParams
+
+        dialogBinding.btnConfirm.setOnSingleClickListener {
+            dialog.dismiss()
+            navigator.navigate(R.id.action_communityWriteFragment_to_communityFragment)
         }
     }
 }
