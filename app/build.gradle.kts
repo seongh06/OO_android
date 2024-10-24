@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -99,4 +101,9 @@ dependencies {
     //indicator : https://github.com/tommybuonomo/dotsindicator?utm_source=android-arsenal.com&utm_medium=referral&utm_campaign=7127
     implementation("com.tbuonomo:dotsindicator:5.0")
 
+    implementation ("me.relex:circleindicator:2.1.6")
+
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
+
 }
+

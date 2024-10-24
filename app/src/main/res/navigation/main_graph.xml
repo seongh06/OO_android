@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
     app:startDestination="@id/homeFragment">
 
+    <!-- 기존 Fragment들 -->
     <fragment
         android:id="@+id/homeFragment"
         android:name="ggum.oo.presentation.home.HomeFragment"
@@ -25,13 +25,31 @@
         android:id="@+id/searchResultFragment"
         android:name="ggum.oo.presentation.search.SearchResultFragment"
         android:label="SearchResultFragment"
-        tools:layout="@layout/fragment_search_result"/>
+        tools:layout="@layout/fragment_search_result">
+        <action
+            android:id="@+id/action_searchResultFragment_to_searchFragment"
+            app:destination="@id/searchFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/promotionFragment"
         android:name="ggum.oo.presentation.promotion.PromotionFragment"
         android:label="PromotionFragment"
-        tools:layout="@layout/fragment_promotion"/>
+        tools:layout="@layout/fragment_promotion">
+        <action
+            android:id="@+id/action_promotionFragment_to_promotionWriteFragment"
+            app:destination="@id/promotionWriteFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/promotionWriteFragment"
+        android:name="ggum.oo.presentation.promotion.PromotionWriteFragment"
+        android:label="PromotionWriteFragment"
+        tools:layout="@layout/fragment_promotion_write">
+        <action
+            android:id="@+id/action_promotionWriteFragment_to_promotionFragment"
+            app:destination="@id/promotionFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/mypageFragment"
@@ -39,10 +57,44 @@
         android:label="MypageFragment"
         tools:layout="@layout/fragment_mypage"/>
 
+    <!-- Community Fragment들 -->
     <fragment
         android:id="@+id/communityFragment"
         android:name="ggum.oo.presentation.community.CommunityFragment"
         android:label="CommunityFragment"
-        tools:layout="@layout/fragment_community"/>
+        tools:layout="@layout/fragment_community" >
+        <action
+            android:id="@+id/action_communityFragment_to_communityWriteFragment"
+            app:destination="@id/communityWriteFragment"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_communityFragment_to_communityPostFragment"
+            app:destination="@id/communityPostFragment"
+            app:exitAnim="@anim/nav_default_exit_anim">
+            <argument
+                android:name="id"
+                app:argType="integer"/>
+        </action>
+    </fragment>
 
+    <fragment
+        android:id="@+id/communityPostFragment"
+        android:name="ggum.oo.presentation.community.CommunityPostFragment"
+        android:label="CommunityPostFragment"
+        tools:layout="@layout/fragment_community_post">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/communityWriteFragment"
+        android:name="ggum.oo.presentation.community.CommunityWriteFragment"
+        android:label="CommunityWriteFragment"
+        tools:layout="@layout/fragment_community_write">
+        <action
+            android:id="@+id/action_communityWriteFragment_to_communityFragment"
+            app:destination="@id/communityFragment"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
+    </fragment>
 </navigation>
