@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
 import ggum.oo.data.service.ContentItem
 
-class ContentRVA(private var contentList: List<ContentItem>) : RecyclerView.Adapter<ContentRVA.ViewHolder>() {
+class ContentRVA(
+    private var items: List<ContentItem>, // items를 var로 변경하여 업데이트 가능하도록 설정
+    private val onItemClick: (ContentItem) -> Unit // 클릭 이벤트 핸들러
+) : RecyclerView.Adapter<ContentRVA.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvArea: TextView = itemView.findViewById(R.id.tv_content_area_item)
@@ -22,10 +25,10 @@ class ContentRVA(private var contentList: List<ContentItem>) : RecyclerView.Adap
         private val tvCommentCount: TextView = itemView.findViewById(R.id.tv_content_comment)
 
         fun bind(contentItem: ContentItem) {
-            // Boolean 값을 기반으로 area 표시
+            itemView.setOnClickListener { onItemClick(contentItem) } // 클릭 리스너 설정
             tvArea.text = if (contentItem.area) "교내" else "교외"
             setTextWithLimit(tvTitle, contentItem.title, 10)
-            setTextWithLimit(tvBody, contentItem.body, 30) // 최대 100자 제한
+            setTextWithLimit(tvBody, contentItem.body, 30) // 최대 30자 제한
 
             // 이미지가 null인 경우 CardView를 GONE으로 설정
             if (contentItem.image != null) {
@@ -55,13 +58,13 @@ class ContentRVA(private var contentList: List<ContentItem>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(contentList[position])
+        holder.bind(items[position]) // items 리스트에서 아이템 바인딩
     }
 
-    override fun getItemCount(): Int = contentList.size
+    override fun getItemCount(): Int = items.size // items의 크기 반환
 
     fun updateList(newList: List<ContentItem>) {
-        contentList = newList
+        items = newList // items를 새로운 리스트로 업데이트
         notifyDataSetChanged() // 데이터가 변경되었음을 알림
     }
 }

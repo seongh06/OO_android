@@ -6,6 +6,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
+import ggum.oo.data.service.ContentList
 import ggum.oo.databinding.FragmentCommunityBinding
 import ggum.oo.databinding.FragmentMypageBinding
 import ggum.oo.databinding.FragmentSearchResultBinding
@@ -30,7 +31,10 @@ class CommunityFragment : BaseFragment<FragmentCommunityBinding>(R.layout.fragme
     }
 
     private fun setupViewPager() {
-        communityVPA = CommunityVPA(this)
+        // contentItems를 수신하는 로직 추가
+        val contentItems = ContentList.items // 필요한 데이터를 가져옵니다.
+
+        communityVPA = CommunityVPA(this, contentItems) // contentItems 전달
         viewPager.adapter = communityVPA
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
@@ -50,6 +54,6 @@ class CommunityFragment : BaseFragment<FragmentCommunityBinding>(R.layout.fragme
     }
 
     override fun initObserver() {
-
+        // 필요한 옵저버 초기화
     }
 }

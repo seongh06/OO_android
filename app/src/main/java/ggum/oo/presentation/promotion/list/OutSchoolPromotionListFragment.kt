@@ -1,5 +1,6 @@
 package ggum.oo.presentation.promotion.list
 
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
@@ -22,7 +23,11 @@ class OutSchoolPromotionListFragment  : BaseFragment<FragmentPostListBinding>(R.
 
     private fun setupRecyclerView() {
         val communityItems = ContentList.items.filter { ! it.area &&  it.category}
-        contentRVA = ContentRVA(communityItems)
+        contentRVA = ContentRVA(communityItems) { item ->
+            // 클릭 시 수행할 작업
+            Log.d("InSchoolPromotion", "Clicked item: ${item.id}")
+            // 필요한 네비게이션 처리 추가
+        }
         binding.rvPostList.apply {
             adapter = contentRVA
             layoutManager = LinearLayoutManager(requireContext())

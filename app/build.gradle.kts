@@ -103,4 +103,7 @@ dependencies {
 
     implementation ("me.relex:circleindicator:2.1.6")
 
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
+
 }
+
