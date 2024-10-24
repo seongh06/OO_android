@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
+import ggum.oo.data.ClubItem
 import ggum.oo.databinding.ItemDialogClubBinding // ViewBinding을 사용한다고 가정
-
-data class ClubItem(var name: String, var number: String, var isCompleted: Boolean = false)
 
 class DialogClubRVA(private val clubList: MutableList<ClubItem>) : RecyclerView.Adapter<DialogClubRVA.ClubViewHolder>() {
 
