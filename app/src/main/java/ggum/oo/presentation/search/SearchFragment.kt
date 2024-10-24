@@ -36,7 +36,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     override fun initView() {
         binding.etSearchBlock.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                viewModel.searchResult.value = s.toString()
+                s?.let { viewModel.setSearchQuery(it.toString()) }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -51,6 +51,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
         binding.ivSearchButton.setOnSingleClickListener {
             navigator.navigate(R.id.action_searchFragment_to_searchResultFragment)
+        }
+
+        binding.ivSearchBack.setOnSingleClickListener {
+            navigator.navigateUp()
         }
     }
 

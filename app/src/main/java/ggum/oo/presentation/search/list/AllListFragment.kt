@@ -19,7 +19,7 @@ class AllListFragment  : BaseFragment<FragmentPostListBinding>(R.layout.fragment
     private val viewModel: SearchViewModel by activityViewModels() // ViewModel 가져오기
     private var contentList: List<ContentItem> = listOf() // 전체 데이터 리스트
     override fun initObserver() {
-        viewModel.searchResult.observe(viewLifecycleOwner) { query ->
+        viewModel.searchQuery.observe(viewLifecycleOwner) { query ->
             filterContent(query)
         }
     }

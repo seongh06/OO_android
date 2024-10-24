@@ -42,7 +42,7 @@
             android:id="@+id/iv_search_img"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:background="@drawable/ic_row_back_yellow"
+            android:background="@drawable/shape_circle_logo"
             app:layout_constraintStart_toStartOf="@id/et_search_block"
             app:layout_constraintTop_toTopOf="@id/et_search_block"
             app:layout_constraintBottom_toBottomOf="@id/et_search_block"
