@@ -3,15 +3,12 @@ package ggum.oo.presentation.community
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
-import ggum.oo.data.service.CommentItem
-import ggum.oo.data.service.ContentItem
+import ggum.oo.data.CommentItem
 
 class CommentRVA(private var commentList: List<CommentItem>) : RecyclerView.Adapter<CommentRVA.ViewHolder>() {
 

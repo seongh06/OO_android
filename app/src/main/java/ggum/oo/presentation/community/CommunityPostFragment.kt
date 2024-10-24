@@ -4,13 +4,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
-import ggum.oo.data.service.CommentItem
-import ggum.oo.data.service.CommentList
-import ggum.oo.data.service.ContentItem
-import ggum.oo.data.service.ContentList
+import ggum.oo.data.CommentItem
+import ggum.oo.data.CommentList
 import ggum.oo.databinding.FragmentCommunityPostBinding
 import ggum.oo.presentation.base.BaseFragment
-import ggum.oo.presentation.search.ContentRVA
 
 @AndroidEntryPoint
 class CommunityPostFragment : BaseFragment<FragmentCommunityPostBinding>(R.layout.fragment_community_post) {

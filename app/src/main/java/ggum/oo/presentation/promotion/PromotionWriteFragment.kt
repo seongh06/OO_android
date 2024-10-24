@@ -1,7 +1,5 @@
 package ggum.oo.presentation.promotion
 
-import android.content.Intent
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -9,16 +7,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
 import ggum.oo.databinding.DialogPostBinding
-import ggum.oo.databinding.FragmentCommunityBinding
-import ggum.oo.databinding.FragmentCommunityWriteBinding
 import ggum.oo.databinding.FragmentPromotionWriteBinding
-import ggum.oo.presentation.MainActivity
 import ggum.oo.presentation.base.BaseFragment
 import ggum.oo.util.extension.setOnSingleClickListener
 

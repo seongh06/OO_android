@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_rect_100_yellow_line"
-            android:hint="우리끼리, 제잘재잘!"
+            android:hint="우리끼리, 재잘재잘!"
             style="@style/TextAppearance.OO.search"
             android:paddingVertical="10dp"
             android:paddingHorizontal="40dp"

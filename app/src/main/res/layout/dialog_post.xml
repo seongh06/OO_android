@@ -10,7 +10,7 @@
         <!-- 중앙에 위치할 사각형 레이아웃 -->
         <RelativeLayout
             android:layout_width="350dp"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_centerInParent="true"
             android:background="@drawable/shape_rect_15_dialog">
 
@@ -18,7 +18,7 @@
                 android:id="@+id/tv_dialog_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="게시글 작성"
+                android:text="게시글 등록 완료"
                 style="@style/TextAppearance.OO.bold_20sp"
                 android:textColor="@color/gray"
                 android:layout_centerHorizontal="true"
@@ -28,7 +28,7 @@
                 android:id="@+id/tv_dialog_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="글이 등록되었습니다."
+                android:text="더 동글동글 해졌어요!"
                 style="@style/TextAppearance.OO.16sp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/tv_dialog_title"
@@ -44,7 +44,7 @@
                     android:id="@+id/btn_confirm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_rect_15_gray_dialog"
+                    android:background="@drawable/shape_rect_15_yellow_dialog"
                     android:text="닫기"
                     style="@style/TextAppearance.OO.16sp"
                     android:textColor="@color/white"/>

@@ -3,15 +3,13 @@ package ggum.oo.presentation.home
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
-import ggum.oo.data.service.ContentList
+import ggum.oo.data.ContentList
 import ggum.oo.databinding.FragmentHomeBinding
 import ggum.oo.presentation.base.BaseFragment
-import ggum.oo.presentation.search.ContentRVA
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {

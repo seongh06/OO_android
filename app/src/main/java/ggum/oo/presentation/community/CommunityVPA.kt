@@ -2,13 +2,10 @@ package ggum.oo.presentation.community
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import ggum.oo.data.service.ContentItem
+import ggum.oo.data.ContentItem
 import ggum.oo.presentation.community.list.AllCommunityListFragment
 import ggum.oo.presentation.community.list.InSchoolCommunityListFragment
 import ggum.oo.presentation.community.list.OutSchoolCommunityListFragment
-import ggum.oo.presentation.search.list.AllListFragment
-import ggum.oo.presentation.search.list.InSchoolListFragment
-import ggum.oo.presentation.search.list.OutSchoolListFragment
 
 
 class CommunityVPA(fragment: Fragment, private val contentItems: List<ContentItem>) : FragmentStateAdapter(fragment) {

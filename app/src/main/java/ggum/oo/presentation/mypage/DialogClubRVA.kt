@@ -18,21 +18,19 @@ class DialogClubRVA(private val clubList: MutableList<ClubItem>) : RecyclerView.
             binding.tvDialogClubNameItem.text = clubItem.name
             binding.tvDialogClubNumberItem.text = clubItem.number
 
-            if (clubItem.isCompleted) {
-                binding.tvDialogClubAcceptItem.text = "완료"
-                binding.tvDialogClubAcceptItem.setBackgroundResource(R.drawable.shape_rect_6_gray_fill)
-                binding.tvDialogClubAcceptItem.isEnabled = false // 완료된 경우 버튼 비활성화
-            } else {
-                binding.tvDialogClubAcceptItem.text = "승인"
-                binding.tvDialogClubAcceptItem.setBackgroundResource(R.drawable.shape_rect_6_yellow_fill)
-                binding.tvDialogClubAcceptItem.isEnabled = true // 승인 버튼 활성화
-            }
+            // 상태에 따라 버튼 텍스트 및 배경 설정
+            updateButtonState(clubItem)
 
             // 승인 버튼 클릭 리스너
             binding.tvDialogClubAcceptItem.setOnClickListener {
                 if (!clubItem.isCompleted) { // 완료 상태가 아닐 경우에만 승인
                     clubItem.isCompleted = true // 완료 상태로 변경
                     onAccept(position) // 승인 콜백 호출, 현재 위치 전달
+                } else {
+                    // 이미 완료된 경우 승인 취소
+                    clubItem.isCompleted = false // 완료 상태 해제
+                    onAccept(position) // 승인 콜백 호출, 현재 위치 전달
+                    updateButtonState(clubItem) // 버튼 상태 업데이트
                 }
             }
 
@@ -46,6 +44,20 @@ class DialogClubRVA(private val clubList: MutableList<ClubItem>) : RecyclerView.
                 }
             }
         }
+
+        // 버튼 상태 업데이트 메서드
+        private fun updateButtonState(clubItem: ClubItem) {
+            if (clubItem.isCompleted) {
+                binding.tvDialogClubAcceptItem.text = "완료"
+                binding.tvDialogClubAcceptItem.setBackgroundResource(R.drawable.shape_rect_6_gray_fill)
+                binding.tvDialogClubAcceptItem.isEnabled = true // 완료 상태에서도 클릭 가능
+            } else {
+                binding.tvDialogClubAcceptItem.text = "승인"
+                binding.tvDialogClubAcceptItem.setBackgroundResource(R.drawable.shape_rect_6_yellow_fill)
+                binding.tvDialogClubAcceptItem.isEnabled = true // 승인 버튼 활성화
+            }
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubViewHolder {

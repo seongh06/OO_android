@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
-import ggum.oo.data.service.ContentList
+import ggum.oo.data.ContentList
 import ggum.oo.databinding.FragmentPostListBinding
 import ggum.oo.presentation.base.BaseFragment
 import ggum.oo.presentation.search.ContentRVA

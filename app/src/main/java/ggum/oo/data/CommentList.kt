@@ -1,4 +1,4 @@
-package ggum.oo.data.service
+package ggum.oo.data
 
 object CommentList {
     val items:List<CommentItem> = listOf(

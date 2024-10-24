@@ -1,4 +1,4 @@
-package ggum.oo.data.service
+package ggum.oo.data
 
 import android.os.Parcel
 import android.os.Parcelable
