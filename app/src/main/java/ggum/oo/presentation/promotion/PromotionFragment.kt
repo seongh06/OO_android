@@ -6,6 +6,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
+import ggum.oo.data.ContentList
 import ggum.oo.databinding.FragmentPromotionBinding
 import ggum.oo.databinding.FragmentSearchResultBinding
 import ggum.oo.presentation.base.BaseFragment
@@ -29,7 +30,10 @@ class PromotionFragment : BaseFragment<FragmentPromotionBinding>(R.layout.fragme
     }
 
     private fun setupViewPager() {
-        promotionVPA = PromotionVPA(this)
+
+        val contentItems = ContentList.items // 필요한 데이터를 가져옵니다.
+
+        promotionVPA = PromotionVPA(this, contentItems)
         viewPager.adapter = promotionVPA
 
         // TabLayout과 ViewPager2 연결

@@ -38,7 +38,15 @@
         tools:layout="@layout/fragment_promotion">
         <action
             android:id="@+id/action_promotionFragment_to_promotionWriteFragment"
-            app:destination="@id/promotionWriteFragment"/>
+            app:destination="@id/promotionWriteFragment"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_promotionFragment_to_promotionPostFragment"
+            app:destination="@id/promotionPostFragment"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="id"
+            app:argType="integer"/>
     </fragment>
 
     <fragment
@@ -48,7 +56,18 @@
         tools:layout="@layout/fragment_promotion_write">
         <action
             android:id="@+id/action_promotionWriteFragment_to_promotionFragment"
-            app:destination="@id/promotionFragment"/>
+            app:destination="@id/promotionFragment"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/promotionPostFragment"
+        android:name="ggum.oo.presentation.promotion.PromotionPostFragment"
+        android:label="PromotionPostFragment"
+        tools:layout="@layout/fragment_promotion_post">
+        <argument
+            android:name="id"
+            app:argType="integer"/>
     </fragment>
 
     <fragment

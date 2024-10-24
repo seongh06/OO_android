@@ -12,8 +12,8 @@ class HashtagRVA(private val hashtagList: List<String>) : RecyclerView.Adapter<H
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textView: TextView = itemView.findViewById(R.id.tv_hashtag_item)
 
-        fun bind(searchTerm: String) {
-            textView.text = searchTerm
+        fun bind(hashtag: String) {
+            textView.text = "#$hashtag"
         }
     }
 

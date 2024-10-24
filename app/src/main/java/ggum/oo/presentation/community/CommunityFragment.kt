@@ -44,13 +44,13 @@ class CommunityFragment : BaseFragment<FragmentCommunityBinding>(R.layout.fragme
         }.attach()
     }
 
+    override fun initObserver() {
+
+    }
+
     private fun goToWriteCommunity() {
         binding.fabCommunityWriteBtn.setOnSingleClickListener {
             navigator.navigate(R.id.action_communityFragment_to_communityWriteFragment)
         }
-    }
-
-    override fun initObserver() {
-        // 필요한 옵저버 초기화
     }
 }

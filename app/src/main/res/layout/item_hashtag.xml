@@ -9,8 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="#해시태그"
-        style="@style/TextAppearance.OO.gray_16sp"
-        android:textStyle="bold"
+        style="@style/TextAppearance.OO.gray_14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="10dp"/>

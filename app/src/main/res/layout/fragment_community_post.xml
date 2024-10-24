@@ -18,7 +18,8 @@
             android:src="@drawable/ic_back"
             app:layout_constraintTop_toTopOf="@id/tv_logo"
             app:layout_constraintBottom_toBottomOf="@id/tv_logo"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"/>
 
         <TextView
             android:id="@+id/tv_logo"
@@ -29,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="20dp"
             />
 
         <LinearLayout
@@ -114,6 +115,13 @@
                 android:layout_marginTop="20dp"
                 android:text="본문본문본문본문본문본문본문본문본문 ... 본문본문본문본문본문본문본문본문본문 ... "
                 style="@style/TextAppearance.OO.16sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_community_post_hashtag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"/>
 
         </LinearLayout>
 
