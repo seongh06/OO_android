@@ -1,4 +1,4 @@
-package ggum.oo.data.service
+package ggum.oo.data
 
 data class CommentItem(
     val id: Int,

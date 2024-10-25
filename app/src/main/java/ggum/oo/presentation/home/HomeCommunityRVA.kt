@@ -3,12 +3,10 @@ package ggum.oo.presentation.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
-import ggum.oo.data.service.ContentItem
+import ggum.oo.data.ContentItem
 
 class HomeCommunityRVA(private var contentList: List<ContentItem>) : RecyclerView.Adapter<HomeCommunityRVA.ViewHolder>() {
 

@@ -4,42 +4,43 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/tv_comment_qa_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Q."
+    <ImageView
+        android:id="@+id/iv_community_comment_profile_item"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/img_profile"
         style="@style/TextAppearance.OO.bold_20sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"
         android:layout_marginStart="25dp"/>
 
+
     <TextView
-        android:id="@+id/tv_comment_nickname_item"
+        android:id="@+id/tv_community_comment_nickname_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="닉네임"
         style="@style/TextAppearance.OO.title_16sp"
-        app:layout_constraintTop_toTopOf="@id/tv_comment_qa_item"
-        app:layout_constraintStart_toEndOf="@id/tv_comment_qa_item"
+        app:layout_constraintTop_toTopOf="@id/iv_community_comment_profile_item"
+        app:layout_constraintStart_toEndOf="@id/iv_community_comment_profile_item"
         android:layout_marginStart="7dp"/>
 
     <TextView
-        android:id="@+id/tv_comment_body_item"
+        android:id="@+id/tv_community_comment_body_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="댓글"
         style="@style/TextAppearance.OO.14sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_comment_nickname_item"
-        app:layout_constraintStart_toStartOf="@id/tv_comment_nickname_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_community_comment_nickname_item"
+        app:layout_constraintStart_toStartOf="@id/tv_community_comment_nickname_item"
         android:layout_marginEnd="25dp"/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="@drawable/shape_dot_line"
-        app:layout_constraintTop_toBottomOf="@id/tv_comment_body_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_community_comment_body_item"
         android:layout_marginTop="25dp"/>
 
 

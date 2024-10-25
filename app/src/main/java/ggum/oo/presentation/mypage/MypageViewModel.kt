@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import ggum.oo.data.ClubItem
+import ggum.oo.data.ClubRequestItem
 import javax.inject.Inject
 
 @HiltViewModel
@@ -13,6 +15,9 @@ class MypageViewModel @Inject constructor(
 ):ViewModel() {
     private val _clubList = MutableLiveData<List<ClubItem>>(emptyList())
     val clubList: LiveData<List<ClubItem>> get() = _clubList
+
+    private val _clubRequestList = MutableLiveData<List<ClubRequestItem>>(emptyList())
+    val clubRequestList: LiveData<List<ClubRequestItem>> get() = _clubRequestList
 
     fun loadClubs() {
         // 데이터 로드 로직 (예: 서버 호출)
@@ -28,4 +33,13 @@ class MypageViewModel @Inject constructor(
         )
     }
 
+    fun loadClubRequests() {
+        Log.d("MypageViewModel", "loadClubRequests called")
+        _clubRequestList.value = listOf(
+            ClubRequestItem("구름톤", 1),
+            ClubRequestItem("GDG", 2),
+            ClubRequestItem("UMC", 3),
+            ClubRequestItem("멋쟁이사자처럼", 1),
+        )
+    }
 }

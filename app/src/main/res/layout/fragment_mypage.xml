@@ -232,7 +232,8 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
 
@@ -252,7 +253,8 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
 
@@ -272,7 +274,8 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
 
@@ -292,7 +295,8 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
 
@@ -329,7 +333,30 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layout_mypage_club_join"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="동아리 인증 확인"
+                                style="@style/TextAppearance.OO.16sp"
+                                android:gravity="start"
+                                android:layout_weight="1"/>
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
 
@@ -342,7 +369,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="동아리 신청 확인"
+                                android:text="동아리 인증 요청자 확인"
                                 style="@style/TextAppearance.OO.16sp"
                                 android:gravity="start"
                                 android:layout_weight="1"/>
@@ -350,7 +377,8 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
                     </LinearLayout>
@@ -386,7 +414,8 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
 
@@ -406,7 +435,8 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
 
@@ -426,7 +456,8 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
 
@@ -446,11 +477,74 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_next"/>
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_mypage_etc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/layout_mypage_support"
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="기타"
+                        style="@style/TextAppearance.OO.gray_16sp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/layout_mypage_logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="로그아웃"
+                            style="@style/TextAppearance.OO.16sp"
+                            android:gravity="start"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_next"
+                            android:layout_gravity="center_vertical"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_mypage_withdraw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="계정탈퇴"
+                            style="@style/TextAppearance.OO.16sp"
+                            android:gravity="start"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_next"
+                            android:layout_gravity="center_vertical"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

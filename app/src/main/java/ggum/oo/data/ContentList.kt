@@ -1,4 +1,4 @@
-package ggum.oo.data.service
+package ggum.oo.data
 
 import ggum.oo.R
 

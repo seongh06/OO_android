@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
-import ggum.oo.data.service.ContentItem
+import ggum.oo.data.ContentItem
 
 class ContentRVA(
     private var items: List<ContentItem>, // items를 var로 변경하여 업데이트 가능하도록 설정

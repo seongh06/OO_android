@@ -1,15 +1,11 @@
 package ggum.oo.presentation.mypage
 
-import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
-import ggum.oo.databinding.DialogClubBinding
 import ggum.oo.databinding.FragmentMypageBinding
 import ggum.oo.presentation.base.BaseFragment
-import ggum.oo.presentation.search.SearchHistoryRVA
 import ggum.oo.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
@@ -66,11 +62,19 @@ class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
         binding.layoutMypageClubMember.setOnClickListener {
             showClubDialog()
         }
+        binding.layoutMypageClubJoin.setOnSingleClickListener {
+            showClubRequestDialog()
+        }
     }
 
     private fun showClubDialog() {
         val dialogFragment = DialogClubFragment()
         dialogFragment.show(childFragmentManager, "DialogClubFragment")
+    }
+
+    private fun showClubRequestDialog() {
+        val dialogFragment = DialogClubRequestFragment()
+        dialogFragment.show(childFragmentManager, " DialogClubRequestFragment")
     }
 
 }

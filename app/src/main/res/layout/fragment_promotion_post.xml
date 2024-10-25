@@ -12,7 +12,7 @@
         android:background="@color/white">
 
         <ImageView
-            android:id="@+id/iv_community_post_back"
+            android:id="@+id/iv_promotion_post_back"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_back"
@@ -25,16 +25,15 @@
             android:id="@+id/tv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="재잘재잘"
+            android:text="동글동글"
             style="@style/TextAppearance.OO.logo_36sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp"
-            />
+            android:layout_marginTop="20dp" />
 
         <LinearLayout
-            android:id="@+id/layout_community_post_content"
+            android:id="@+id/layout_promotion_post_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_logo"
@@ -48,7 +47,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_community_post_area"
+                    android:id="@+id/tv_promotion_post_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="교내"
@@ -56,10 +55,10 @@
                     style="@style/TextAppearance.OO.gray_bold_18sp"/>
 
                 <TextView
-                    android:id="@+id/tv_community_post_date"
+                    android:id="@+id/tv_promotion_post_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10/22 10:00"
+                    android:text="10/25 03:00"
                     android:layout_weight="1"
                     android:gravity="right"
                     style="@style/TextAppearance.OO.gray_12sp" />
@@ -67,11 +66,10 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_community_post_title"
+                android:id="@+id/tv_promotion_post_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="제목"
-                android:textStyle="bold"
+                android:text="10.27 GGUM 해커톤 어때?"
                 android:layout_marginTop="10dp"
                 style="@style/TextAppearance.OO.bold_20sp"/>
 
@@ -82,13 +80,13 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:id="@+id/iv_community_post_profile"
+                    android:id="@+id/iv_promotion_post_profile"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/img_anony_profile"/>
 
                 <TextView
-                    android:id="@+id/tv_community_post_nickname"
+                    android:id="@+id/tv_promotion_post_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="글쓴이"
@@ -102,6 +100,7 @@
                     android:layout_weight="1"/>
 
                 <ImageView
+                    android:id="@+id/iv_promotion_post_like"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_unselected_like"
@@ -109,16 +108,24 @@
 
             </LinearLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_promotion_post_image"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal" />
+
             <TextView
-                android:id="@+id/tv_community_post_body"
+                android:id="@+id/tv_promotion_post_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="본문본문본문본문본문본문본문본문본문 ... 본문본문본문본문본문본문본문본문본문 ... "
+                android:text="GGUM 연합해커톤은 가톨릭대 내 IT 연합동아리,
+Groomthon_univ, GDG on Campus, UMC, 멋쟁이사자처럼 총 4개의 동아리가 주최하는 연합해커톤이에요."
                 style="@style/TextAppearance.OO.16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_community_post_hashtag"
+                android:id="@+id/rv_promotion_post_hashtag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -127,21 +134,21 @@
         </LinearLayout>
 
         <View
-            android:id="@+id/view_community_post_line"
+            android:id="@+id/view_promotion_post_line"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@drawable/shape_dot_line"
-            app:layout_constraintTop_toBottomOf="@id/layout_community_post_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_promotion_post_content"
             android:layout_marginTop="20dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_community_post_comment"
+            android:id="@+id/rv_promotion_post_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/view_community_post_line"/>
+            app:layout_constraintTop_toBottomOf="@id/view_promotion_post_line"/>
 
         <EditText
-            android:id="@+id/et_community_post_comment_text"
+            android:id="@+id/et_promotion_post_comment_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="답변을 남겨주세요"
@@ -152,12 +159,12 @@
             android:paddingStart="23dp"/>
         
         <ImageView
-            android:id="@+id/et_community_post_comment_send"
+            android:id="@+id/et_promotion_post_comment_send"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_comment_send"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@id/et_community_post_comment_text"
+            app:layout_constraintTop_toTopOf="@id/et_promotion_post_comment_text"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="23dp"/>
 
