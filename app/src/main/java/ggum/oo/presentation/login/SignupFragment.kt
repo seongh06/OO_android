@@ -22,6 +22,12 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>(R.layout.fragment_sig
 
     override fun initObserver() {
         observeInputFields()
+        viewModel.navigateToSignupEmail.observe(viewLifecycleOwner, { shouldNavigate ->
+            if (shouldNavigate) {
+                // SignupEmailFragment로 이동
+                navigator.navigate(R.id.signupEmailFragment) // 적절한 ID로 변경
+            }
+        })
     }
 
     override fun initView() {
@@ -78,6 +84,7 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>(R.layout.fragment_sig
 
     private fun validateEmail() {
         val email = binding.etSignupEmail.text.toString()
+        viewModel.updateEmail(email)
 
         viewModel.validEmail(email)
 

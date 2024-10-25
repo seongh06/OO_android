@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.provider.ContactsContract.CommonDataKinds.Nickname
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,6 +14,7 @@ import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ggum.oo.data.dto.NoneBaseResponse
 import ggum.oo.data.dto.request.SignUpLoginRequestDto
+import ggum.oo.domain.model.request.AuthRequestModel
 import ggum.oo.domain.model.request.SignUpLoginRequestModel
 import ggum.oo.domain.repository.LoginRepository
 import kotlinx.coroutines.launch
@@ -33,6 +35,8 @@ class SignupViewModel @Inject constructor(
     private val _password = MutableLiveData<String>()
     private val _phone = MutableLiveData<String>()
     private val _nickname = MutableLiveData<String>()
+    private val _authCode = MutableLiveData<String>()
+    val authCode: LiveData<String> get() = _authCode
     val email: LiveData<String> get() = _email
     val password: LiveData<String> get() = _password
     val phone: LiveData<String> get() = _phone
@@ -45,6 +49,8 @@ class SignupViewModel @Inject constructor(
     val authenticationStatus: LiveData<Boolean> get() = _authenticationStatus // 올바른 getter 구문
     private val _authenticationStatus = MutableLiveData<Boolean>()
     val _authCodeStatus = MutableLiveData<Boolean>()
+    private val _navigateToSignupEmail = MutableLiveData<Boolean>()
+    val navigateToSignupEmail: LiveData<Boolean> get() = _navigateToSignupEmail
 
 
     fun updateEmail(newEmail: String) {
@@ -76,17 +82,6 @@ class SignupViewModel @Inject constructor(
         }
     }
 
-    fun authenticateEmail(email: String, authCode: String) {
-        viewModelScope.launch {
-            repository.authentication(email, authCode)
-                .onSuccess {response ->
-                    _authenticationStatus.value = (response.code == "COM-000")
-                }.onFailure { error ->
-                    Timber.e(error)
-                    _authenticationStatus.value = false
-                }
-        }
-    }
     fun authCode(email: String) {
         viewModelScope.launch {
             repository.authCode(email)
@@ -115,7 +110,17 @@ class SignupViewModel @Inject constructor(
         viewModelScope.launch {
             repository.validEmail(email)
                 .onSuccess { response ->
-                    _validEmailStatus.value = (response.code == "COM-000")
+                    when (response.code) {
+                        "COM-000" -> {
+                            _validEmailStatus.value = true
+                        }
+                        "MEM-999" -> {
+                            _navigateToSignupEmail.value = true // Fragment로 이동 신호
+                        }
+                        else -> {
+                            _validEmailStatus.value = false
+                        }
+                    }
                 }
                 .onFailure { error ->
                     Timber.e(error)
@@ -123,6 +128,8 @@ class SignupViewModel @Inject constructor(
                 }
         }
     }
+
+
 
     private suspend fun sendSignupData(signupRequest: SignUpLoginRequestModel) {
         repository.signUp(signupRequest).onSuccess {
@@ -139,4 +146,20 @@ class SignupViewModel @Inject constructor(
             signupStatus.postValue(Result.failure(it)) // 실패 시 LiveData 업데이트
         }
     }
+
+
+    fun authentication(authCode: String) {
+        val email = _email.value ?: ""
+        val authRequest = AuthRequestModel(email, authCode)
+        viewModelScope.launch {
+            repository.authentication(authRequest)
+                .onSuccess { response ->
+                    _authenticationStatus.value = (response.code == "COM-000")
+                }
+                .onFailure { error ->
+                    _authenticationStatus.value = false
+                }
+        }
+    }
+
 }

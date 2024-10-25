@@ -273,7 +273,7 @@
                 style="@style/TextAppearance.OO.prtendard_12sp"
                 android:textColor="@color/oo.yellow"
                 android:layout_marginBottom="15dp"
-                android:visibility="gone"/>
+            android:visibility="gone"/>
 
         </LinearLayout>
 

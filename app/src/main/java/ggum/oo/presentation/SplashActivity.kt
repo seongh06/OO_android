@@ -4,14 +4,11 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.graphics.Path
 import android.os.Bundle
-import android.util.DisplayMetrics
-import android.util.TypedValue
 import android.view.View
 import android.view.animation.AlphaAnimation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import ggum.oo.R
-import ggum.oo.presentation.login.LoginActivity
 import ggum.oo.presentation.login.StartActivity
 
 class SplashActivity : AppCompatActivity() {
@@ -29,26 +26,27 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startLogoAnimation() {
-        // 페이드 인 효과 추가
-        val fadeIn = AlphaAnimation(0f, 1f)
-        fadeIn.duration = 1000 // 1초 동안 페이드 인
-        logoImageView.startAnimation(fadeIn) // 페이드 인 애니메이션 시작
 
-        // dp를 픽셀로 변환
-        val startX = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50f, resources.displayMetrics)
-        val startY = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 360f, resources.displayMetrics)
-        val endX = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 282f, resources.displayMetrics)
-        val endY = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 396f, resources.displayMetrics)
+        // dp를 픽셀로 변환하지 않고 직접 float 값으로 설정
+        val startX = 120f // 시작 X
+        val startY = 950f // 시작 Y
+        val endX = 770f // 도착 X
+        val radius = (endX- startX) / 2 // 반지름 설정
 
-        // 원형 경로 애니메이션 설정
+        // 경로 애니메이션 설정
         val path = Path().apply {
-            // 시작점과 끝점을 기반으로 원형 경로 정의
-            moveTo(startX, startY) // 시작점
-            arcTo(endX, endY, startX, startY, 0f, 360f, false) // 원호 정의
+            // 반원 정의 (왼쪽으로 위쪽)
+            arcTo(
+                startX, startY - radius/8,  // 좌상단 (반원의 시작)
+                endX, startY + radius, // 우하단 (반원의 끝)
+                -180f,  // 시작 각도
+                180f, // 각도 (180도 반원)
+                false // 오프셋 여부
+            )
         }
 
         // ObjectAnimator로 애니메이션 설정
-        val animator = ObjectAnimator.ofFloat(logoImageView, "translationX", "translationY", path)
+        val animator = ObjectAnimator.ofFloat(logoImageView, "x", "y", path)
         animator.duration = 2000 // 애니메이션 지속 시간 (2초)
         animator.start()
 

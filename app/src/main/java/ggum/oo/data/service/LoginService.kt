@@ -1,6 +1,8 @@
 package ggum.oo.data.service
 
+import ggum.oo.data.dto.BaseResponse
 import ggum.oo.data.dto.NoneBaseResponse
+import ggum.oo.data.dto.request.AuthRequestDto
 import ggum.oo.data.dto.request.SignUpLoginRequestDto
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -9,11 +11,9 @@ import retrofit2.http.PUT
 import retrofit2.http.Query
 
 interface LoginService {
-    // api 명세서의 api 주소 기입
     @PUT("/api/authentication")
     suspend fun authentication(
-        @Body email: String,
-        @Body authCode : String
+        @Body requestDto: AuthRequestDto
     ): NoneBaseResponse
 
     @PUT("/api/auth-code")
@@ -35,4 +35,10 @@ interface LoginService {
     suspend fun validEmail(
         @Query("email") email: String
     ): NoneBaseResponse
+
+    @GET("/api/login")
+    suspend fun login(
+        @Query("email") email: String,
+        @Query("password") password: String
+    ): BaseResponse<String>
 }

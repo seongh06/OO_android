@@ -7,7 +7,4 @@ data class SignUpLoginRequestDto(
     val password: String,
     val phoneNumber: String,
     val nickname: String
-):Serializable {
-    fun toSignUpLoginRequestDto() =
-        SignUpLoginRequestDto(email, password, phoneNumber, nickname)
-}
+)
