@@ -4,11 +4,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/iv_promotion_comment_profile_item"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/img_profile"
+    <TextView
+        android:id="@+id/tv_promotion_comment_qa_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Q."
         style="@style/TextAppearance.OO.bold_20sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:text="닉네임"
         style="@style/TextAppearance.OO.title_16sp"
-        app:layout_constraintTop_toTopOf="@id/iv_promotion_comment_profile_item"
-        app:layout_constraintStart_toEndOf="@id/iv_promotion_comment_profile_item"
+        app:layout_constraintTop_toTopOf="@id/tv_promotion_comment_qa_item"
+        app:layout_constraintStart_toEndOf="@id/tv_promotion_comment_qa_item"
         android:layout_marginStart="7dp"/>
 
     <TextView

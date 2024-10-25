@@ -13,7 +13,6 @@ import ggum.oo.data.CommentItem
 class CommunityCommentRVA(private var commentList: List<CommentItem>) : RecyclerView.Adapter<CommunityCommentRVA.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tvQa: TextView = itemView.findViewById(R.id.tv_community_comment_qa_item)
         private val tvNickname: TextView = itemView.findViewById(R.id.tv_community_comment_nickname_item)
         private val tvBody: TextView = itemView.findViewById(R.id.tv_community_comment_body_item)
 
@@ -21,12 +20,11 @@ class CommunityCommentRVA(private var commentList: List<CommentItem>) : Recycler
             tvNickname.text = commentItem.nickname ?: "알 수 없음"
             tvBody.text = commentItem.body ?: "내용 없음"
             if (commentItem.writer) {
-                tvQa.text = "Q."
-                tvQa.setTextColor(ContextCompat.getColor(itemView.context, R.color.warning)) // warning 색상
-                tvNickname.text="동글이 ${position + 1}"
+                tvNickname.text = "재잘이 ${position + 1}" // position을 1부터 시작하도록 +1
+                tvNickname.setTextColor(ContextCompat.getColor(itemView.context, R.color.black)) // warning 색상
             } else {
-                tvQa.text = "A."
-                tvQa.setTextColor(ContextCompat.getColor(itemView.context, R.color.answer)) // blue 색상
+                tvNickname.text = "글쓴이"
+                tvNickname.setTextColor(ContextCompat.getColor(itemView.context, R.color.oo_yellow)) // blue 색상
             }
         }
     }

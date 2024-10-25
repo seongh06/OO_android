@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="ggum.oo.presentation.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
@@ -29,6 +33,12 @@
         <action
             android:id="@+id/action_searchResultFragment_to_searchFragment"
             app:destination="@id/searchFragment"/>
+        <action
+            android:id="@+id/action_searchResultFragment_to_promotionPostFragment"
+            app:destination="@id/promotionPostFragment"/>
+        <action
+            android:id="@+id/action_searchResultFragment_to_communityPostFragment"
+            app:destination="@id/communityPostFragment"/>
     </fragment>
 
     <fragment

@@ -16,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
 import ggum.oo.databinding.FragmentSearchResultBinding
 import ggum.oo.presentation.base.BaseFragment
+import ggum.oo.presentation.community.CommunityVPA
 import ggum.oo.presentation.search.list.AllListFragment
 import ggum.oo.presentation.search.list.FavoriteListFragment
 import ggum.oo.presentation.search.list.InSchoolListFragment
