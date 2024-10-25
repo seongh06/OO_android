@@ -7,11 +7,13 @@ import ggum.oo.data.dto.response.MypageResponseDto
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface MypageService {
 
     @POST("/api/mypage/club-request")
     suspend fun clubRequest(
+        @Query ("memberId") memberId: Int,
         @Body clubName: String,
         @Body studentId: String,
         @Body name: String
@@ -28,5 +30,7 @@ interface MypageService {
     ): NoneBaseResponse
 
     @GET("api/mypage")
-    suspend fun mypage(): BaseResponse<MypageResponseDto>
+    suspend fun mypage(
+        @Query ("memberId") memberId: Int
+        ): BaseResponse<MypageResponseDto>
 }

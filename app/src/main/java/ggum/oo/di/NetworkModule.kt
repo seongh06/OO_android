@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ggum.oo.OOApplication
 import ggum.oo.R
+import ggum.oo.data.service.LoginService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -61,5 +62,11 @@ object NetworkModule {
             .addConverterFactory(gsonConverterFactory)
             .client(client)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideLoginService(retrofit: Retrofit): LoginService {
+        return retrofit.create(LoginService::class.java)
     }
 }

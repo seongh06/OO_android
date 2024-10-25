@@ -12,8 +12,8 @@ class MypageDataSourceImpl @Inject constructor(
     private val mypageService: MypageService
 ): MypageDataSource{
 
-    override suspend fun clubRequest(clubName: String, studentId: String, name: String): NoneBaseResponse =
-        mypageService.clubRequest(clubName, studentId, name)
+    override suspend fun clubRequest(memberId: Int, clubName: String, studentId: String, name: String): NoneBaseResponse =
+        mypageService.clubRequest(memberId, clubName, studentId, name)
 
     override suspend fun clubReject(request: ClubMypageRequestDto): NoneBaseResponse =
         mypageService.clubReject(request)
@@ -21,7 +21,6 @@ class MypageDataSourceImpl @Inject constructor(
     override suspend fun clubAccept(request: ClubMypageRequestDto): NoneBaseResponse =
         mypageService.clubAccept(request)
 
-    override suspend fun mypage(): BaseResponse<MypageResponseDto> =
-        mypageService.mypage()
-
+    override suspend fun mypage(memberId: Int): BaseResponse<MypageResponseDto> =
+        mypageService.mypage(memberId)
 }

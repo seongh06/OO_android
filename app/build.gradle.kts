@@ -105,5 +105,8 @@ dependencies {
 
     implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
 
+    implementation ("com.jakewharton.timber:timber:5.0.1")
+
+
 }
 

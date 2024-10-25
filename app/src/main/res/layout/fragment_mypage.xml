@@ -185,8 +185,10 @@
 
                     <ImageView
                         android:id="@+id/iv_mypage_toggle_button"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
                         android:src="@drawable/ic_toggle"
                         app:layout_constraintTop_toTopOf="@id/layout_mypage_club_box"
                         app:layout_constraintEnd_toEndOf="@id/layout_mypage_club_box"/>
@@ -198,7 +200,7 @@
                     app:layout_constraintTop_toBottomOf="@id/iv_mypage_toggle_button"
                     app:layout_constraintStart_toStartOf="@id/layout_mypage_club_box"
                     android:visibility="gone"
-                    android:background="@drawable/shape_rect_8_yellow_line_fill"
+                    android:background="@drawable/shape_rect_8_gray_line_fill"
                     android:elevation="5dp"/>
 
                     <LinearLayout
@@ -483,7 +485,7 @@
                         </LinearLayout>
 
                     </LinearLayout>
-
+<!--
                 <LinearLayout
                     android:id="@+id/layout_mypage_etc"
                     android:layout_width="match_parent"
@@ -543,7 +545,7 @@
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </LinearLayout>-->
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,8 +11,8 @@ class MypageRepositoryImpl @Inject constructor(
     private val mypageDataSource: MypageDataSource
 ) : MypageRepository {
 
-    override suspend fun clubRequest(clubName: String, studentId: String, name: String): Result<NoneBaseResponse> =
-        runCatching { mypageDataSource.clubRequest(clubName, studentId, name) }
+    override suspend fun clubRequest(memberId:Int, clubName: String, studentId: String, name: String): Result<NoneBaseResponse> =
+        runCatching { mypageDataSource.clubRequest(memberId, clubName, studentId, name) }
 
     override suspend fun clubReject(request: ClubMypageRequestModel): Result<NoneBaseResponse> =
         runCatching { mypageDataSource.clubReject(request.toClubMypageRequestDto()) }
@@ -20,7 +20,7 @@ class MypageRepositoryImpl @Inject constructor(
     override suspend fun clubAccept(request: ClubMypageRequestModel): Result<NoneBaseResponse> =
         runCatching { mypageDataSource.clubAccept(request.toClubMypageRequestDto()) }
 
-    override suspend fun mypage(): Result<MypageResponseModel> =
-        runCatching { mypageDataSource.mypage().data.toMypageResponseModel() }
+    override suspend fun mypage(memberId: Int): Result<MypageResponseModel> =
+        runCatching { mypageDataSource.mypage(memberId).data.toMypageResponseModel() }
 
 }
