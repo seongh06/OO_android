@@ -43,6 +43,7 @@ data class ContentItem(
     }
 
     companion object CREATOR : Parcelable.Creator<ContentItem> {
+
         override fun createFromParcel(parcel: Parcel): ContentItem {
             return ContentItem(parcel)
         }

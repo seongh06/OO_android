@@ -19,8 +19,8 @@ class InSchoolCommunityListFragment  : BaseFragment<FragmentPostListBinding>(R.l
     private lateinit var contentItems: List<ContentItem>
 
     companion object {
-        fun newInstance(contentItems: List<ContentItem>): AllCommunityListFragment {
-            val fragment = AllCommunityListFragment()
+        fun newInstance(contentItems: List<ContentItem>): InSchoolCommunityListFragment {
+            val fragment = InSchoolCommunityListFragment()
             val args = Bundle().apply {
                 putParcelableArrayList("contentItems", ArrayList(contentItems)) // Parcelable로 변환하여 전달
             }
