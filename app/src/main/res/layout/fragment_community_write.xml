@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_logo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="재잘재잘"
+            style="@style/TextAppearance.OO.logo_36sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
+
+        <ImageView
+            android:id="@+id/iv_community_write_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintTop_toTopOf="@id/tv_logo_text"
+            app:layout_constraintBottom_toBottomOf="@id/tv_logo_text"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/layout_community_write_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_logo_text"
+            android:layout_marginTop="28dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal">
+            
+            <LinearLayout
+                android:id="@+id/layout_community_write_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_community_write_in"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/shape_circle_unselected"/>
+                
+                <TextView
+                    android:id="@+id/tv_community_write_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="교내"
+                    style="@style/TextAppearance.OO.title_16sp"
+                    android:textColor="@color/light.gray"
+                    android:layout_marginStart="5dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_community_write_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp">
+
+                <ImageView
+                    android:id="@+id/iv_community_write_out"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/shape_circle_unselected"/>
+
+                <TextView
+                    android:id="@+id/tv_community_write_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="교외"
+                    android:layout_marginStart="5dp"
+                    style="@style/TextAppearance.OO.title_16sp"
+                    android:textColor="@color/light.gray"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_community_write_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_community_write_area"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="28dp">
+
+            <EditText
+                android:id="@+id/et_community_write_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="제목"
+                style="@style/TextAppearance.OO.title_16sp"
+                android:textColorHint="@color/light.gray"
+                android:background="@color/empty"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="20dp"
+                android:background="@color/light.gray"/>
+
+            <EditText
+                android:id="@+id/et_community_write_hashtag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="해시태그"
+                style="@style/TextAppearance.OO.title_16sp"
+                android:textColorHint="@color/light.gray"
+                android:background="@color/empty"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="20dp"
+                android:background="@color/light.gray"/>
+
+        </LinearLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_community_write_content"
+            app:layout_constraintBottom_toTopOf="@id/tv_community_write_success"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="28dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_community_write_body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="내용 입력"
+                    android:textColorHint="@color/light.gray"
+                    style="@style/TextAppearance.OO.16sp"
+                    android:background="@color/empty"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <TextView
+            android:id="@+id/tv_community_write_success"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="등록 완료"
+            android:gravity="center"
+            android:paddingVertical="15dp"
+            android:layout_marginHorizontal="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            style="@style/TextAppearance.OO.16sp"
+            android:textColor="@color/white"
+            android:background="@drawable/shape_rect_6_yellow_fill"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

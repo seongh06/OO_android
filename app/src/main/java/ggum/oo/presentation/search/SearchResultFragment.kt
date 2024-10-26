@@ -1,8 +1,12 @@
 package ggum.oo.presentation.search
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -12,10 +16,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
 import ggum.oo.databinding.FragmentSearchResultBinding
 import ggum.oo.presentation.base.BaseFragment
+import ggum.oo.presentation.community.CommunityVPA
 import ggum.oo.presentation.search.list.AllListFragment
 import ggum.oo.presentation.search.list.FavoriteListFragment
 import ggum.oo.presentation.search.list.InSchoolListFragment
 import ggum.oo.presentation.search.list.OutSchoolListFragment
+import ggum.oo.util.extension.setOnSingleClickListener
+import java.util.Locale.filter
 
 @AndroidEntryPoint
 class SearchResultFragment : BaseFragment<FragmentSearchResultBinding>(R.layout.fragment_search_result) {
@@ -23,12 +30,27 @@ class SearchResultFragment : BaseFragment<FragmentSearchResultBinding>(R.layout.
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var contentVPA: ContentVPA
+    private val viewModel : SearchViewModel by activityViewModels()
+    private val navigator by lazy { findNavController() }
 
     override fun initView() {
         tabLayout = binding.tabSearchResultCategory
         viewPager = binding.vpSearchResultList
 
         setupViewPager()
+        setupSearchObserver() // 검색어 관찰 설정
+
+
+
+        binding.ivSearchResultBack.setOnSingleClickListener {
+            navigator.navigateUp()
+        }
+        binding.ivSearchDelete.setOnSingleClickListener {
+            binding.etSearchBlock.text.clear()
+        }
+        binding.etSearchBlock.setOnSingleClickListener {
+            navigator.navigate(R.id.action_searchResultFragment_to_searchFragment)
+        }
     }
 
     private fun setupViewPager() {
@@ -49,5 +71,12 @@ class SearchResultFragment : BaseFragment<FragmentSearchResultBinding>(R.layout.
 
     override fun initObserver() {
 
+    }
+
+    private fun setupSearchObserver() {
+        viewModel.searchQuery.observe(viewLifecycleOwner) { query ->
+            binding.etSearchBlock.setText(query) // EditText에 검색어 설정
+            binding.etSearchBlock.setSelection(query.length) // 커서 위치 설정
+        }
     }
 }

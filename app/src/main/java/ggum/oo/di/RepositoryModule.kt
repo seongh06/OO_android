@@ -5,8 +5,12 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
+import ggum.oo.data.datasource.LoginDataSource
+import ggum.oo.data.repositoryImpl.LoginRepositoryImpl
 import ggum.oo.data.repositoryImpl.TestRepositoryImpl
+import ggum.oo.data.service.LoginService
 import ggum.oo.data.service.TestService
+import ggum.oo.domain.repository.LoginRepository
 import ggum.oo.domain.repository.TestRepository
 
 @Module
@@ -21,4 +25,9 @@ object RepositoryModule {
     fun providesTestRepository(
         testService: TestService
     ): TestRepository = TestRepositoryImpl(testService)
+
+    @Provides
+    fun provideLoginRepository(loginDataSource: LoginDataSource): LoginRepository {
+        return LoginRepositoryImpl(loginDataSource)
+    }
 }
