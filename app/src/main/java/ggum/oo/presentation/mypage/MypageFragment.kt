@@ -4,27 +4,16 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
+import ggum.oo.data.ClubList
 import ggum.oo.databinding.FragmentMypageBinding
 import ggum.oo.presentation.base.BaseFragment
-import ggum.oo.presentation.search.SearchHistoryRVA
+import ggum.oo.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
 class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
 
     private lateinit var clubAdapter: MypageClubRVA
     private lateinit var myClubAdapter: MypageMyClubRVA
-
-    private val clubList = listOf(
-        "umc",
-        "포롱",
-        "아이콘",
-        "CDZ",
-        "구름톤",
-        "스타티스트",
-        "ASC",
-        "GDG",
-        "멋쟁이 사자처럼"
-    )
 
     private val myclubList = listOf(
         "umc 7th",
@@ -43,7 +32,7 @@ class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
     override fun initView() {
 
         myClubAdapter = MypageMyClubRVA(myclubList)
-        clubAdapter = MypageClubRVA(clubList)
+        clubAdapter = MypageClubRVA(ClubList.clubName)
 
         binding.rvMypageMyClubList.adapter = myClubAdapter
         binding.rvMypageClubList.adapter = clubAdapter
@@ -58,5 +47,23 @@ class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
                 binding.rvMypageClubList.visibility = View.VISIBLE
             }
         }
+
+        binding.layoutMypageClubMember.setOnClickListener {
+            showClubDialog()
+        }
+        binding.layoutMypageClubJoin.setOnSingleClickListener {
+            showClubRequestDialog()
+        }
     }
+
+    private fun showClubDialog() {
+        val dialogFragment = DialogClubFragment()
+        dialogFragment.show(childFragmentManager, "DialogClubFragment")
+    }
+
+    private fun showClubRequestDialog() {
+        val dialogFragment = DialogClubRequestFragment()
+        dialogFragment.show(childFragmentManager, " DialogClubRequestFragment")
+    }
+
 }
