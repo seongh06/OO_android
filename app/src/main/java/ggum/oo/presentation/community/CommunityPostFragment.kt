@@ -31,6 +31,10 @@ class CommunityPostFragment : BaseFragment<FragmentCommunityPostBinding>(R.layou
         setupHashtagRecyclerView()
         setupCommentRecyclerView()
         loadComments() // 댓글 로드
+
+        binding.ivCommunityPostBack.setOnClickListener{
+            findNavController().navigateUp()
+        }
     }
 
     private fun setupCommentRecyclerView() {

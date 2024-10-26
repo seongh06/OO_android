@@ -2,6 +2,7 @@ package ggum.oo.presentation.mypage
 
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
@@ -49,6 +50,10 @@ class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
             } else {
                 binding.rvMypageClubList.visibility = View.VISIBLE
             }
+        }
+
+        binding.ivMypageBack.setOnClickListener{
+            findNavController().navigateUp()
         }
 
         binding.layoutMypageClubMember.setOnClickListener {
