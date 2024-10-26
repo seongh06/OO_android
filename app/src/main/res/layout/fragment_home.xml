@@ -24,7 +24,9 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="20dp"
             android:layout_marginStart="29dp"
-            android:layout_marginEnd="20dp" />
+            android:layout_marginEnd="20dp"
+            android:inputType="textFilter" />
+
 
         <EditText
             android:id="@+id/tv_search_bar"

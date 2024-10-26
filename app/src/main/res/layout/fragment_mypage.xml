@@ -67,9 +67,10 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv_mypage_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="닉네임"
+                    android:text="네모"
                     style="@style/TextAppearance.OO.18sp"/>
 
                 <TextView
@@ -82,6 +83,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_mypage_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="dongdong@catholic.ac.kr"
@@ -171,7 +173,7 @@
                             android:layout_marginBottom="15dp"/>
 
                         <TextView
-                            android:id="@+id/tv_login_button"
+                            android:id="@+id/tv_join_button"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="동아리 인증하기"
@@ -291,6 +293,28 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="내가 쓴 글"
+                                style="@style/TextAppearance.OO.16sp"
+                                android:gravity="start"
+                                android:layout_weight="1"/>
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_next"
+                                android:layout_gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layout_mypage_manager"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="동아리 운영자 인증"
                                 style="@style/TextAppearance.OO.16sp"
                                 android:gravity="start"
                                 android:layout_weight="1"/>

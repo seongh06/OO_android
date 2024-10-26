@@ -8,7 +8,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
 import ggum.oo.data.ContentList
 import ggum.oo.databinding.FragmentPromotionBinding
-import ggum.oo.databinding.FragmentSearchResultBinding
 import ggum.oo.presentation.base.BaseFragment
 import ggum.oo.presentation.search.ContentVPA
 import ggum.oo.util.extension.setOnSingleClickListener

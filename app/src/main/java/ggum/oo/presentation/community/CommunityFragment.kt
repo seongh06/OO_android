@@ -45,7 +45,7 @@ class CommunityFragment : BaseFragment<FragmentCommunityBinding>(R.layout.fragme
     }
 
     override fun initObserver() {
-
+        // LiveData나 기타 옵저버 패턴을 사용할 경우 여기에 구현
     }
 
     private fun goToWriteCommunity() {

@@ -28,11 +28,10 @@ data class MypageResponseDto(
             MypageResponseModel.WaitingMemberListElementModel(name, email, studentId, isConfirmed)
     }
     data class AllClubListElementDto(
-        val name: String,
-        val isConfirmed: String
+        val clubName: String
     ){
         fun toAllClubListElementModel() =
-            MypageResponseModel.AllClubListElementModel(name, isConfirmed)
+            MypageResponseModel.AllClubListElementModel(clubName)
     }
     fun toMypageResponseModel() =
         MypageResponseModel(nickName, email, role, myClubList.map { it.toMyClubListElementModel()}, waitingMemberList.map{it.toWaitingMemberListElementModel()}, allClubList.map { it.toAllClubListElementModel() }, currentClubName)

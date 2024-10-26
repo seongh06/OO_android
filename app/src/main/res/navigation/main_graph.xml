@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_searchResultFragment_to_communityPostFragment"
             app:destination="@id/communityPostFragment"/>
+        <argument
+            android:name="query"
+            app:argType="string" />
     </fragment>
 
     <fragment

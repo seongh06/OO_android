@@ -1,18 +1,24 @@
 package ggum.oo.domain.repository
 
 import ggum.oo.data.dto.NoneBaseResponse
+import ggum.oo.data.dto.request.ClubManagerRequestDto
+import ggum.oo.data.dto.response.MypageResponseDto
+import ggum.oo.domain.model.request.ClubManagerRequestModel
 import ggum.oo.domain.model.request.ClubMypageRequestModel
+import ggum.oo.domain.model.request.ClubRequestModel
 import ggum.oo.domain.model.response.MypageResponseModel
 
 
 interface MypageRepository {
 
-    suspend fun clubRequest(memberId:Int, clubName: String, studentId:String,name:String): Result<NoneBaseResponse>
+    suspend fun clubRequest(request: ClubRequestModel): Result<NoneBaseResponse>
 
     suspend fun clubReject(request: ClubMypageRequestModel): Result<NoneBaseResponse>
 
     suspend fun clubAccept(request: ClubMypageRequestModel): Result<NoneBaseResponse>
 
-    suspend fun mypage(memberId: Int): Result<MypageResponseModel>
+    suspend fun mypage(): Result<MypageResponseModel>
+
+    suspend fun clubManager(request: ClubManagerRequestModel):Result<NoneBaseResponse>
 
 }
