@@ -4,12 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.motion.widget.MotionScene.Transition.TransitionOnClick
 import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
 import ggum.oo.data.ContentItem
 import ggum.oo.presentation.search.ContentRVA
 
-class HomeCommunityRVA(private var contentList: List<ContentItem>) : RecyclerView.Adapter<HomeCommunityRVA.ViewHolder>() {
+class HomeCommunityRVA(private var contentList: List<ContentItem>,
+    private val onItemClick: (ContentItem) -> Unit) : RecyclerView.Adapter<HomeCommunityRVA.ViewHolder>() {
 
     private lateinit var contentItems: List<ContentItem>
     private lateinit var contentRVA: ContentRVA
@@ -21,7 +23,10 @@ class HomeCommunityRVA(private var contentList: List<ContentItem>) : RecyclerVie
         fun bind(contentItem: ContentItem) {
             setTextWithLimit(tvTitle, contentItem.title, 10)
             setTextWithLimit(tvBody, getFirstSentence(contentItem.body), 20)
-
+            //클릭 리스너 설정
+            itemView.setOnClickListener{
+                onItemClick(contentItem)
+            }
         }
 
         private fun setTextWithLimit(textView: TextView, text: String, maxLength: Int) {

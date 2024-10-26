@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
@@ -72,6 +73,12 @@ class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
             val clubName = binding.etMypageClubName.text.toString()
 
             viewModel.ClubManager(email, clubName,requireContext())
+        binding.ivMypageBack.setOnClickListener{
+            findNavController().navigateUp()
+        }
+
+        binding.layoutMypageClubMember.setOnClickListener {
+            showClubDialog()
         }
 
         binding.tvJoinButton.setOnSingleClickListener {

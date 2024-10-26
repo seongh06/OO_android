@@ -6,7 +6,6 @@ import android.content.Context
 import androidx.annotation.StringRes
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.auth0.android.jwt.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
 import ggum.oo.util.network.NetworkConnectionChecker
 import timber.log.Timber

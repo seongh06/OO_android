@@ -5,9 +5,10 @@ import androidx.navigation.NavController
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
+import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
 import ggum.oo.data.ContentItem
@@ -15,6 +16,7 @@ import ggum.oo.data.ContentList
 import ggum.oo.databinding.FragmentHomeBinding
 import ggum.oo.presentation.base.BaseFragment
 import ggum.oo.presentation.community.list.AllCommunityListFragment
+import ggum.oo.presentation.promotion.PromotionVPA
 import ggum.oo.presentation.search.ContentRVA
 import ggum.oo.util.extension.setOnSingleClickListener
 
@@ -25,8 +27,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private var sliderRunnable: Runnable? = null
     private lateinit var homeCommunityRVA: HomeCommunityRVA
     private lateinit var homePromotionRVA: HomePromotionRVA
+    private lateinit var communityContentRVA: ContentRVA
+    private lateinit var promotionContentRVA: ContentRVA
     private lateinit var contentItems: List<ContentItem>
-    private lateinit var contentRVA: ContentRVA
     private val navigator by lazy { findNavController() }
 
     companion object {
@@ -45,7 +48,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         arguments?.let {
             contentItems = it.getParcelableArrayList("contentItems") ?: emptyList() // 데이터 수신
         }
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView() // recyclerview 설정
+        setupBanner() // 배너 설정
+    }
+
 
     override fun initObserver() {
         // 필요에 따라 옵저버 설정
@@ -60,14 +71,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         val homecontentItems = ContentList.items // 전체 리스트 가져오기
         val filteredcommunityItems = homecontentItems.filter { !it.category }
         val filteredpromotionItems = homecontentItems.filter { it.category }
-        homeCommunityRVA = HomeCommunityRVA(filteredcommunityItems.take(3))
-        contentRVA = ContentRVA(filteredcommunityItems) {contentItem ->
+        homeCommunityRVA = HomeCommunityRVA(filteredcommunityItems.take(3)) {
+            contentItem -> val bundle = Bundle().apply {
+                putInt("id", contentItem.id)
+            }
+        }
+        communityContentRVA = ContentRVA(filteredcommunityItems) {contentItem ->
             onContentCommunityItemClick(contentItem)
         }
-        homePromotionRVA = HomePromotionRVA(filteredpromotionItems.take(3))
-        contentRVA = ContentRVA(filteredpromotionItems) {contentItem ->
+        homePromotionRVA = HomePromotionRVA(filteredpromotionItems.take(3)) {
+            contentItem -> val bundle = Bundle().apply {
+                putInt("id", contentItem.id)
+            }
+            navigator.navigate(R.id.action_homeFragment_to_promotionFragment, bundle)
+        }
+        promotionContentRVA = ContentRVA(filteredpromotionItems) {contentItem ->
             onContentPromotionItemClick(contentItem)
         }
+
+        homeCommunityRVA = HomeCommunityRVA(filteredcommunityItems.take(3)){
+            contentItems -> val bundle = Bundle().apply {
+                putInt("id", contentItems.id)
+            }
+            navigator.navigate(R.id.action_homeFragment_to_communityFragment, bundle)
+        }
+
         binding.rvHomeCommunity.apply {
             adapter = homeCommunityRVA
             layoutManager = LinearLayoutManager(requireContext())
@@ -105,6 +133,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_example_umc))
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_example_goorm))
 
+        Log.d("HomeFragment", "Number of Banner Fragments: ${bannerAdapter.itemCount}")
+
         binding.vpHomeBanner.adapter = bannerAdapter
         binding.vpHomeBanner.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
@@ -136,6 +166,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         // Runnable을 첫 번째로 post
         sliderHandler.post(sliderRunnable!!)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
