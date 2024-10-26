@@ -6,14 +6,17 @@ import android.content.Context
 import androidx.annotation.StringRes
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.auth0.android.jwt.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
 import ggum.oo.util.network.NetworkConnectionChecker
+import timber.log.Timber
 
 // @HiltAndroidApp : Hilt 사용시 반드시 선행 되어야 하는 부분, 모든 의존성 주입의 시작점
 @HiltAndroidApp
 class OOApplication : Application(), DefaultLifecycleObserver {
     override fun onCreate() {
         super<Application>.onCreate()
+        Timber.plant(Timber.DebugTree())
         context = applicationContext
         networkConnectionChecker = NetworkConnectionChecker(context)
     }

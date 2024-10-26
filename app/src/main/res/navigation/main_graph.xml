@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchResultFragment"
             app:destination="@id/searchResultFragment"/>
+        <argument
+            android:name="id"
+            app:argType="integer"/>
     </fragment>
 
     <fragment

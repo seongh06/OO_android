@@ -1,7 +1,6 @@
 package ggum.oo.data
 
 data class ClubItem(
-    var name: String,
-    var number: String,
-    var isCompleted: Boolean = false
+    var email: String,
+    var clubName: String
 )

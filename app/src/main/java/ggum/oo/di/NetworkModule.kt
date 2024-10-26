@@ -1,5 +1,6 @@
 package ggum.oo.di
 
+import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -8,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import ggum.oo.OOApplication
 import ggum.oo.R
 import ggum.oo.data.service.LoginService
+import ggum.oo.util.network.AuthInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,31 +26,32 @@ object NetworkModule {
     const val NETWORK_EXCEPTION_OFFLINE_CASE = "network status is offline"
     const val NETWORK_EXCEPTION_BODY_IS_NULL = "result.json body is null"
 
-    // @Provides : 모듈 클래스 내에 해당 객체 생성
     @Provides
     @Singleton
     fun providesConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create(
             GsonBuilder()
-                .setLenient()
+                .setLenient() // JSON 파싱에 유연성을 제공
                 .create()
         )
     }
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(
+    fun provideOkHttpClient(
+        spf: SharedPreferences,
+        cookieJar: MyCookieJar // MyCookieJar 주입
     ): OkHttpClient {
-        val interceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
-        return OkHttpClient.Builder().apply {
-
-            addInterceptor(interceptor)
-            connectTimeout(5, TimeUnit.SECONDS)
-            readTimeout(5, TimeUnit.SECONDS)
-            writeTimeout(5, TimeUnit.SECONDS)
-        }.build()
+        return OkHttpClient.Builder()
+            .addInterceptor(AuthInterceptor(spf, cookieJar)) // AuthInterceptor 추가
+            .cookieJar(cookieJar) // CookieJar 추가
+            .connectTimeout(30, TimeUnit.SECONDS) // 연결 타임아웃 설정
+            .readTimeout(30, TimeUnit.SECONDS) // 읽기 타임아웃 설정
+            .writeTimeout(30, TimeUnit.SECONDS) // 쓰기 타임아웃 설정
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY // 디버깅을 위한 로깅 설정
+            })
+            .build()
     }
 
     @Provides
@@ -58,15 +61,15 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(OOApplication.getString(R.string.base_url))
-            .addConverterFactory(gsonConverterFactory)
-            .client(client)
+            .baseUrl(OOApplication.getString(R.string.base_url)) // Base URL 설정
+            .addConverterFactory(gsonConverterFactory) // GsonConverterFactory 추가
+            .client(client) // OkHttpClient 추가
             .build()
     }
 
     @Provides
     @Singleton
     fun provideLoginService(retrofit: Retrofit): LoginService {
-        return retrofit.create(LoginService::class.java)
+        return retrofit.create(LoginService::class.java) // LoginService 인터페이스 생성
     }
 }

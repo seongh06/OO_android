@@ -224,6 +224,7 @@
                             android:layout_marginVertical="10dp">
 
                             <TextView
+                                android:id="@+id/tv_mypage_profile_inform"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="프로필 정보"
