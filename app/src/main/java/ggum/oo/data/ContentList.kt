@@ -4,7 +4,7 @@ import ggum.oo.R
 
 object ContentList {
     private val _items = mutableListOf<ContentItem>(
-        ContentItem(1, false, false, "배고파요", "밥줘요밥부ㅏ주바주ㅏㅂ주ㅏㅈ", null, "2024-10-26", 0, false),
+        ContentItem(1, false, false, "GGUM 해커톤 다들 참가할거야??", "나는 이번에 안드로이드 파트로 지원하려고 하는데 같이 지원할 사람??", R.drawable.img_example_content, "2024-10-26", 0, false),
         ContentItem(
             2,
             false,
@@ -67,9 +67,9 @@ object ContentList {
             5,
             true,
             true,
-            "포롱 모집 중",
-            "교내 본문 5",
-            R.drawable.img_example_content,
+            "숙제영화제 개최합니다!!",
+            "안녕하세요. 매년 숙제영화제를 개최하고 있는 미디어기술콘텐츠학과 소모임 포롱입니다! 올해 6번째 숙제영화제를 11월 12일에 개최합니다~!!",
+            null,
             "2024-10-26",
             4,
             true
@@ -77,7 +77,8 @@ object ContentList {
         ContentItem(9, false, true, "학관 1층에 좀비있는데?", "교내 본문 3", null, "2024-10-27", 1, false),
         ContentItem(10, false, false, "미디어기술콘텐츠학과 짱짱맨", "교외 본문 4", null, "2024-10-27", 2, true),
         ContentItem(11, false, true, "CDZ 공연한다며", "교내 본문 5", null, "2024-10-27", 4, true),
-        ContentItem(12, false, false, "우히히히ㅣ히히히히", "교외 본문 6", null, "2024-10-27", 0, false)
+        ContentItem(12, false, false, "우히히히ㅣ히히히히", "교외 본문 6", null, "2024-10-27", 0, false),
+
     )
     val items: List<ContentItem>
         get() = _items.toList() // 외부에서 읽기 전용으로 제공
