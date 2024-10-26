@@ -1,6 +1,8 @@
 package ggum.oo.presentation.home
 
 import android.os.Bundle
+import androidx.navigation.NavController
+import androidx.viewpager2.widget.ViewPager2
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
