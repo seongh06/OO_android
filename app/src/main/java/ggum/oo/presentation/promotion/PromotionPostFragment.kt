@@ -47,6 +47,11 @@ class PromotionPostFragment : BaseFragment<FragmentPromotionPostBinding>(R.layou
         setupImageRecyclerView()
         setupHashtagRecyclerView()
         loadComments() // 댓글 로드
+
+        binding.ivPromotionPostBack.setOnClickListener{
+            findNavController().navigateUp()
+        }
+
     }
 
     override fun initObserver() {
