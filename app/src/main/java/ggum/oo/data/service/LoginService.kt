@@ -3,9 +3,13 @@ package ggum.oo.data.service
 import ggum.oo.data.dto.BaseResponse
 import ggum.oo.data.dto.NoneBaseResponse
 import ggum.oo.data.dto.request.AuthRequestDto
+import ggum.oo.data.dto.request.LoginRequestDto
 import ggum.oo.data.dto.request.SignUpLoginRequestDto
+import ggum.oo.data.dto.response.LoginResponseDto
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Query
@@ -36,9 +40,9 @@ interface LoginService {
         @Query("email") email: String
     ): NoneBaseResponse
 
-    @GET("/api/login")
+    @POST("/api/login")
+    @Headers("Content-Type: application/json")
     suspend fun login(
-        @Query("email") email: String,
-        @Query("password") password: String
-    ): BaseResponse<String>
+        @Body request: LoginRequestDto
+    ): Response<LoginResponseDto>
 }

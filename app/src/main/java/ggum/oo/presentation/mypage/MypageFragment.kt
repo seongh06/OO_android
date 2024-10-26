@@ -1,12 +1,14 @@
 package ggum.oo.presentation.mypage
 
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
 import ggum.oo.data.ClubList
 import ggum.oo.databinding.FragmentMypageBinding
 import ggum.oo.presentation.base.BaseFragment
+import ggum.oo.presentation.login.SignupViewModel
 import ggum.oo.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
@@ -14,6 +16,7 @@ class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
 
     private lateinit var clubAdapter: MypageClubRVA
     private lateinit var myClubAdapter: MypageMyClubRVA
+    private val viewModel: MypageViewModel by activityViewModels()
 
     private val myclubList = listOf(
         "umc 7th",
@@ -53,6 +56,9 @@ class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
         }
         binding.layoutMypageClubJoin.setOnSingleClickListener {
             showClubRequestDialog()
+        }
+        binding.tvMypageProfileInform.setOnSingleClickListener {
+            viewModel.ClubReject("email","clubName")
         }
     }
 

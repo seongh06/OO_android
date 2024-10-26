@@ -2,7 +2,9 @@ package ggum.oo.domain.repository
 
 import ggum.oo.data.dto.NoneBaseResponse
 import ggum.oo.domain.model.request.AuthRequestModel
+import ggum.oo.domain.model.request.LoginRequestModel
 import ggum.oo.domain.model.request.SignUpLoginRequestModel
+import ggum.oo.domain.model.response.LoginResponseModel
 
 
 interface LoginRepository {
@@ -16,5 +18,5 @@ interface LoginRepository {
 
     suspend fun validEmail(email: String): Result<NoneBaseResponse>
 
-    suspend fun login(email: String, password: String): Result<String>
+    suspend fun login(request: LoginRequestModel): Result<LoginResponseModel>
 }
