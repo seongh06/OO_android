@@ -45,9 +45,6 @@ class DialogClubFragment : BaseDialogFragment<DialogClubBinding>(R.layout.dialog
         adapter = DialogClubRVA(mutableListOf()) // 빈 리스트로 초기화
         binding.rvDialogClub.adapter = adapter
 
-        // ViewModel의 데이터 로드 호출
-        viewModel.loadClubs() // 데이터를 로드하여 LiveData를 업데이트합니다.
-
         // LiveData 관찰
         initObserver() // 여기서 관찰 메서드를 호출해야 합니다.
 

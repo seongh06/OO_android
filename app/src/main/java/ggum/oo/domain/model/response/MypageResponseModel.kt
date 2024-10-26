@@ -7,7 +7,7 @@ data class MypageResponseModel(
     val myClubList: List<MyClubListElementModel>,
     val waitingMemberList: List<WaitingMemberListElementModel>,
     val allClubList: List<AllClubListElementModel>,
-    val currentClubName: String
+    val currentClubName: String?
 ) {
     data class MyClubListElementModel(
         val clubName: String,
@@ -20,7 +20,6 @@ data class MypageResponseModel(
         val isConfirmed: String
     )
     data class AllClubListElementModel(
-        val name: String,
-        val isConfirmed: String
+        val clubName: String
     )
 }

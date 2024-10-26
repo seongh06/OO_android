@@ -103,9 +103,10 @@
                     android:layout_weight="1"/>
 
                 <ImageView
+                    android:id="@+id/iv_like"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_unselected_like"
+                    android:background="@drawable/ic_unselected_like"
                     android:layout_gravity="end"/>
 
             </LinearLayout>

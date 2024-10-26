@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/iv_promotion_post_item"
-        android:layout_width="145dp"
+        android:layout_width="300dp"
         android:layout_height="145dp"
         android:src="@drawable/img_logo"
         app:layout_constraintEnd_toEndOf="parent"

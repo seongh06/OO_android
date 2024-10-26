@@ -24,8 +24,8 @@ class DialogClubRVA(
             updateButtonState(clubItem)
 
             // 승인 버튼 클릭 리스너
-            binding.tvDialogClubAcceptItem.setOnClickListener {/*
-                if (!clubItem.isCompleted) { // 완료 상태가 아닐 경우에만 승인
+            binding.tvDialogClubAcceptItem.setOnClickListener {
+ /*               if (!clubItem.isCompleted) { // 완료 상태가 아닐 경우에만 승인
                     clubItem.isCompleted = true // 완료 상태로 변경
                     onAccept(position) // 승인 콜백 호출, 현재 위치 전달
                 } else {

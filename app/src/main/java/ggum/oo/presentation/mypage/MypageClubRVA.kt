@@ -7,13 +7,21 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
 
-class MypageClubRVA(private val club: List<String>) : RecyclerView.Adapter<MypageClubRVA.ViewHolder>() {
+class MypageClubRVA(
+    private val club: List<String>,
+    private val onClubSelected: (String) -> Unit // 선택된 동아리 이름을 전달할 콜백
+) : RecyclerView.Adapter<MypageClubRVA.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textView: TextView = itemView.findViewById(R.id.tv_club_item)
 
         fun bind(clubName: String) {
             textView.text = clubName
+
+            // 아이템 클릭 리스너 설정
+            itemView.setOnClickListener {
+                onClubSelected(clubName) // 선택된 동아리 이름을 전달
+            }
         }
     }
 
