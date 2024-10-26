@@ -22,7 +22,7 @@ class SignupEmailFragment : BaseFragment<FragmentSignupEmailBinding>(R.layout.fr
         viewModel.authenticationStatus.observe(viewLifecycleOwner, { isAuthenticated ->
             if (isAuthenticated) {
                 // 인증 성공 시 메인 화면으로 이동
-                val intent = Intent(requireContext(), MainActivity::class.java)
+                val intent = Intent(requireContext(), LoginActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
             } else {

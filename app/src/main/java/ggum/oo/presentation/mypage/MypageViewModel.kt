@@ -1,18 +1,29 @@
 package ggum.oo.presentation.mypage
 
+import android.app.Application
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ggum.oo.data.ClubItem
 import ggum.oo.data.ClubRequestItem
+import ggum.oo.domain.model.request.ClubMypageRequestModel
+import ggum.oo.domain.repository.LoginRepository
+import ggum.oo.domain.repository.MypageRepository
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class MypageViewModel @Inject constructor(
-
-):ViewModel() {
+    private val spf: SharedPreferences,
+    application: Application,
+    private val repository: MypageRepository
+):AndroidViewModel(application) {
     private val _clubList = MutableLiveData<List<ClubItem>>(emptyList())
     val clubList: LiveData<List<ClubItem>> get() = _clubList
 
@@ -41,5 +52,26 @@ class MypageViewModel @Inject constructor(
             ClubRequestItem("UMC", 3),
             ClubRequestItem("멋쟁이사자처럼", 1),
         )
+    }
+    fun ClubReject(email:String, clubName: String){
+        viewModelScope.launch{
+            repository.clubReject(ClubMypageRequestModel(email,clubName))
+                .onSuccess {
+                    Log.d("d","d")
+                }.onFailure { error->
+                    Log.e("ee","$error")
+                }
+        }
+    }
+
+    fun ClubAccept(email:String, clubName: String){
+        viewModelScope.launch{
+            repository.clubAccept(ClubMypageRequestModel(email,clubName))
+                .onSuccess {
+                    Log.d("d","d")
+                }.onFailure { error->
+                    Log.e("ee","$error")
+                }
+        }
     }
 }

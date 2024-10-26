@@ -1,5 +1,6 @@
 package ggum.oo.presentation.home
 
+import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.viewpager2.widget.ViewPager2
 import android.os.Handler
@@ -10,9 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
 import ggum.oo.R
+import ggum.oo.data.ContentItem
 import ggum.oo.data.ContentList
 import ggum.oo.databinding.FragmentHomeBinding
 import ggum.oo.presentation.base.BaseFragment
+import ggum.oo.presentation.community.list.AllCommunityListFragment
+import ggum.oo.presentation.search.ContentRVA
 import ggum.oo.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
@@ -22,7 +26,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private var sliderRunnable: Runnable? = null
     private lateinit var homeCommunityRVA: HomeCommunityRVA
     private lateinit var homePromotionRVA: HomePromotionRVA
+    private lateinit var contentItems: List<ContentItem>
+    private lateinit var contentRVA: ContentRVA
     private val navigator by lazy { findNavController() }
+
+    companion object {
+        fun newInstance(contentItems: List<ContentItem>): AllCommunityListFragment {
+            val fragment = AllCommunityListFragment()
+            val args = Bundle().apply {
+                putParcelableArrayList("contentItems", ArrayList(contentItems)) // Parcelable로 변환하여 전달
+            }
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            contentItems = it.getParcelableArrayList("contentItems") ?: emptyList() // 데이터 수신
+        }
+    }
 
     override fun initObserver() {
         // 필요에 따라 옵저버 설정
@@ -38,7 +62,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         val filteredcommunityItems = homecontentItems.filter { !it.category }
         val filteredpromotionItems = homecontentItems.filter { it.category }
         homeCommunityRVA = HomeCommunityRVA(filteredcommunityItems.take(3))
+        contentRVA = ContentRVA(filteredcommunityItems) {contentItem ->
+            onContentCommunityItemClick(contentItem)
+        }
         homePromotionRVA = HomePromotionRVA(filteredpromotionItems.take(3))
+        contentRVA = ContentRVA(filteredpromotionItems) {contentItem ->
+            onContentPromotionItemClick(contentItem)
+        }
         binding.rvHomeCommunity.apply {
             adapter = homeCommunityRVA
             layoutManager = LinearLayoutManager(requireContext())
@@ -51,15 +81,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             navigator.navigate(R.id.action_homeFragment_to_searchResultFragment)
         }
     }
+    private fun onContentCommunityItemClick(item: ContentItem) {
+        val bundle = Bundle().apply {
+            putInt("id", item.id) // ID를 Bundle에 추가
+        }
+        navigator.navigate(R.id.communityPostFragment, bundle) // Bundle을 사용하여 네비게이션
+    }
+
+    private fun onContentPromotionItemClick(item: ContentItem) {
+        val bundle = Bundle().apply {
+            putInt("id", item.id) // ID를 Bundle에 추가
+        }
+        navigator.navigate(R.id.promotionPostFragment, bundle) // Bundle을 사용하여 네비게이션
+    }
 
     private fun setupBanner() {
         // binding이 null인지 확인
         if (binding == null) return // binding이 null이면 실행 중지
 
         val bannerAdapter = BannerVPA(this)
-        bannerAdapter.addFragment(BannerFragment(R.drawable.img_example_aespa))
+        bannerAdapter.addFragment(BannerFragment(R.drawable.img_example_content))
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_example_lion))
-        bannerAdapter.addFragment(BannerFragment(R.drawable.img_example_gdsc))
+        bannerAdapter.addFragment(BannerFragment(R.drawable.img_example_gdg))
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_example_umc))
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_example_goorm))
 

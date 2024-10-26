@@ -5,28 +5,39 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.provider.ContactsContract.CommonDataKinds.Nickname
+import android.provider.Settings.Global.putString
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import ggum.oo.data.dto.BaseResponse
 import ggum.oo.data.dto.NoneBaseResponse
+import ggum.oo.data.dto.request.LoginRequestDto
 import ggum.oo.data.dto.request.SignUpLoginRequestDto
+import ggum.oo.data.service.LoginService
 import ggum.oo.domain.model.request.AuthRequestModel
+import ggum.oo.domain.model.request.LoginRequestModel
 import ggum.oo.domain.model.request.SignUpLoginRequestModel
+import ggum.oo.domain.model.response.LoginResponseModel
 import ggum.oo.domain.repository.LoginRepository
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
+import org.json.JSONException
+import org.json.JSONObject
 import timber.log.Timber
 import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 @HiltViewModel
 class SignupViewModel @Inject constructor(
+    private val loginService: LoginService,
     private val spf: SharedPreferences,
     application: Application,
     private val repository: LoginRepository
@@ -51,6 +62,7 @@ class SignupViewModel @Inject constructor(
     val _authCodeStatus = MutableLiveData<Boolean>()
     private val _navigateToSignupEmail = MutableLiveData<Boolean>()
     val navigateToSignupEmail: LiveData<Boolean> get() = _navigateToSignupEmail
+
 
 
     fun updateEmail(newEmail: String) {
@@ -147,7 +159,6 @@ class SignupViewModel @Inject constructor(
         }
     }
 
-
     fun authentication(authCode: String) {
         val email = _email.value ?: ""
         val authRequest = AuthRequestModel(email, authCode)
@@ -162,4 +173,50 @@ class SignupViewModel @Inject constructor(
         }
     }
 
+    private val _loginResult = MutableLiveData<Result<LoginResponseModel>>()
+    val loginResult: LiveData<Result<LoginResponseModel>> get() = _loginResult
+
+    private val _loginStatus = MutableLiveData<Boolean>()
+    val loginStatus: LiveData<Boolean> get() = _loginStatus
+
+    fun login(request: LoginRequestModel) {
+        viewModelScope.launch {
+            // 로그인 메서드 호출
+            val result = repository.login(request)
+
+            // 결과를 LiveData에 저장
+            _loginResult.value = result
+
+            // 결과 처리
+            result.onSuccess { loginResponse ->
+                // SharedPreferences에서 accessToken 가져오기
+                val accessToken = getAccessToken() // SharedPreferences에서 가져옴
+                Timber.d("로그인 성공, accessToken 가져오기: $accessToken")
+
+                if (!accessToken.isNullOrEmpty()) {
+                    // accessToken을 SharedPreferences에 저장
+                    spf.edit().putString("jwt", accessToken).apply()
+                    Timber.d("accessToken 저장 완료: $accessToken")
+                    _loginStatus.value = true // 로그인 성공
+                } else {
+                    Timber.e("accessToken이 저장되어 있지 않습니다.") // 에러 로그
+                    _loginStatus.value = false // 로그인 실패
+                }
+            }.onFailure { error ->
+                Timber.e("로그인 실패: ${error.message}") // 실패 로그
+                _loginStatus.value = false // 로그인 실패
+            }
+        }
+    }
+
+    private fun getAccessToken(): String? {
+        return spf.getString("accessToken", null) // SharedPreferences에서 accessToken 가져오기
+    }
+
+    private fun saveAccessToken(token: String) {
+        spf.edit().apply {
+            putString("accessToken", token)
+            apply()
+        }
+    }
 }

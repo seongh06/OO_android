@@ -7,8 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
 import ggum.oo.data.ContentItem
+import ggum.oo.presentation.search.ContentRVA
 
 class HomeCommunityRVA(private var contentList: List<ContentItem>) : RecyclerView.Adapter<HomeCommunityRVA.ViewHolder>() {
+
+    private lateinit var contentItems: List<ContentItem>
+    private lateinit var contentRVA: ContentRVA
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle: TextView = itemView.findViewById(R.id.tv_home_content_title_item)
