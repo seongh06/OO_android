@@ -10,10 +10,8 @@
         android:layout_height="wrap_content"
         android:text="동아리 기수"
         style="@style/TextAppearance.OO.12sp"
-        android:background="@drawable/shape_rect_100_gray_line"
         android:paddingVertical="6dp"
         android:paddingHorizontal="10dp"
-        android:layout_marginHorizontal="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 

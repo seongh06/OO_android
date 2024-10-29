@@ -9,7 +9,7 @@ data class MypageResponseDto(
     val myClubList: List<MyClubListElementDto>,
     val waitingMemberList: List<WaitingMemberListElementDto>,
     val allClubList: List<AllClubListElementDto>,
-    val currentClubName: String
+    val currentClubName: String?
 ){
     data class MyClubListElementDto(
         val clubName: String,

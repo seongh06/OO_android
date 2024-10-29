@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
 
         // dp를 픽셀로 변환하지 않고 직접 float 값으로 설정
         val startX = 120f // 시작 X
-        val startY = 950f // 시작 Y
+        val startY = 830f // 시작 Y
         val endX = 770f // 도착 X
         val radius = (endX- startX) / 2 // 반지름 설정
 
