@@ -131,7 +131,8 @@
                             android:hint="동아리 선택"
                             style="@style/TextAppearance.OO.16sp"
                             android:textColorHint="@color/hint.gray"
-                            android:background="@color/empty"/>
+                            android:background="@color/empty"
+                            android:inputType="text"/>
 
                         <View
                             android:layout_width="match_parent"
@@ -147,7 +148,8 @@
                             android:hint="이름"
                             style="@style/TextAppearance.OO.16sp"
                             android:textColorHint="@color/hint.gray"
-                            android:background="@color/empty"/>
+                            android:background="@color/empty"
+                            android:inputType="text"/>
 
                         <View
                             android:layout_width="match_parent"
@@ -163,7 +165,8 @@
                             android:hint="학번"
                             style="@style/TextAppearance.OO.16sp"
                             android:textColorHint="@color/hint.gray"
-                            android:background="@color/empty"/>
+                            android:background="@color/empty"
+                            android:inputType="text"/>
 
                         <View
                             android:layout_width="match_parent"
@@ -181,7 +184,9 @@
                             android:textColor="@color/white"
                             android:gravity="center"
                             android:background="@drawable/shape_rect_8_gray_fill30"
-                            android:padding="15dp"/>
+                            android:padding="15dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                     </LinearLayout>
 

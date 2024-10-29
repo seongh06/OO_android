@@ -4,26 +4,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ggum.oo.R
 import ggum.oo.domain.model.response.MypageResponseModel
 
 class MypageMyClubRVA(
-    private val clubs: List<MypageResponseModel.MyClubListElementModel>,
-    private val currentClubName: String // 현재 관리 중인 동아리 이름을 추가
+    private val clubs: List<MypageResponseModel.AllClubListElementModel>,
+    private val currentClubName: String, // 현재 동아리 이름
+    private val userRole: String // 사용자 역할
 ) : RecyclerView.Adapter<MypageMyClubRVA.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val clubNameTextView: TextView = itemView.findViewById(R.id.tv_my_club_item)
 
-        fun bind(club: MypageResponseModel.MyClubListElementModel) {
+        fun bind(club: MypageResponseModel.AllClubListElementModel) {
             clubNameTextView.text = club.clubName
 
-            // 현재 관리 중인 동아리와 일치하는 경우 배경 리소스 변경
-            if (club.clubName == currentClubName) {
-                itemView.setBackgroundResource(R.drawable.shape_rect_100_yellow_fill) // 선택된 동아리 배경 리소스
+            // 현재 동아리와 운영자인지 확인하여 배경 리소스 변경
+            if (club.clubName == currentClubName && userRole == "MANAGER") {
+                itemView.setBackgroundResource(R.drawable.shape_rect_100_yellow_fill)
+                clubNameTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.white))
             } else {
-                itemView.setBackgroundResource(R.drawable.shape_rect_100_gray_line) // 기본 배경
+                itemView.setBackgroundResource(R.drawable.shape_rect_100_gray_line)
+                clubNameTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.black))
             }
         }
     }
@@ -39,4 +43,3 @@ class MypageMyClubRVA(
 
     override fun getItemCount(): Int = clubs.size
 }
-
