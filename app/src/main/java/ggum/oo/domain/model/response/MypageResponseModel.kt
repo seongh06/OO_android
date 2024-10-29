@@ -1,5 +1,7 @@
 package ggum.oo.domain.model.response
 
+import java.io.Serializable
+
 data class MypageResponseModel(
     val nickName: String,
     val email: String,
@@ -8,7 +10,7 @@ data class MypageResponseModel(
     val waitingMemberList: List<WaitingMemberListElementModel>,
     val allClubList: List<AllClubListElementModel>,
     val currentClubName: String?
-) {
+):Serializable {
     data class MyClubListElementModel(
         val clubName: String,
         val isConfirmed: String
